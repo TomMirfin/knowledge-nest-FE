@@ -1,8 +1,10 @@
-import { createApp } from "vue"
-import "./style.css"
-import App from "./App.vue"
-import router from "./router"
-import { initializeApp, FirebaseOptions } from "firebase/app"
+import { createApp } from "vue";
+import "./style.css";
+import { plugin, defaultConfig } from "@formkit/vue";
+import App from "./App.vue";
+import router from "./router";
+import "./components/axios.js";
+import { initializeApp, FirebaseOptions } from "firebase/app";
 
 const firebaseConfig: FirebaseOptions = {
   apiKey: import.meta.env.VUE_APP_FIREBASE_API_KEY || "api-key-not-set",
@@ -15,12 +17,13 @@ const firebaseConfig: FirebaseOptions = {
   appId: import.meta.env.VUE_APP_FIREBASE_APP_ID || "env-not-set",
   measurementId:
     import.meta.env.VUE_APP_FIREBASE_MEASUREMENT_ID || "env-not-set",
-}
+};
 
-initializeApp(firebaseConfig)
+initializeApp(firebaseConfig);
 
-const app: App = createApp(App)
+const app: App = createApp(App);
 
-app.use(router)
+app.use(router);
+app.use(plugin, defaultConfig);
 
-app.mount("#app")
+app.mount("#app");
