@@ -1,35 +1,43 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue"
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"
-const isLoggedIn = ref(false)
+import { onMounted, ref } from "vue";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "vue-router";
 
-let auth
+const isLoggedIn = ref(false);
+
+let auth;
+
+const router: any = useRouter();
+
 onMounted(() => {
-  auth = getAuth()
+  auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      isLoggedIn.value = true
+      isLoggedIn.value = true;
     } else {
-      isLoggedIn.value = false
+      isLoggedIn.value = false;
     }
-  })
-})
+  });
+});
 
 const handleSignOut = () => {
   signOut(auth).then(() => {
-    router.push("/")
-  })
-}
+    router.push("/");
+  });
+};
 </script>
 
 <template>
   <nav>
     <router-link to="/"> Home </router-link> |
-    <router-link to="/login"> login </router-link> |
-    <router-link to="/register"> Register </router-link> |
-    <button @click="handleSignOut" v-if="isLoggedIn">Sign out</button>
+    <span v-if="isLoggedIn">
+      <button @click="handleSignOut">Sign out</button> |
+      <router-link to="/feed"> Feed </router-link>
+    </span>
+    <span v-else-if="!isLoggedIn">
+      <router-link to="/login"> login |</router-link>
+      <router-link to="/register"> Register </router-link>
+    </span>
   </nav>
   <router-view></router-view>
 </template>
-
-<style scoped></style>
