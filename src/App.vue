@@ -28,11 +28,16 @@ const handleSignOut = () => {
 </script>
 
 <template>
-  <nav>
-    <router-link to="/"> Home </router-link> |
+  <nav
+    class="background h-20 flex justify-between items-center p-5 absolute w-full"
+  >
+    <img src="../src/assets/logo.png" alt="" class="w-14" />
+    <router-link to="/"> Home </router-link>
+
     <span v-if="isLoggedIn">
-      <button @click="handleSignOut">Sign out</button> |
       <router-link to="/feed"> Feed </router-link>
+      <router-link to="/userProfile"> Profile </router-link>
+      <button @click="handleSignOut">Sign out</button>
     </span>
     <span v-else-if="!isLoggedIn">
       <router-link to="/login"> login |</router-link>
@@ -41,3 +46,13 @@ const handleSignOut = () => {
   </nav>
   <router-view></router-view>
 </template>
+
+<style>
+.background {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+</style>
