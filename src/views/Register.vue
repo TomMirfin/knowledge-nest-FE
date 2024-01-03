@@ -1,25 +1,22 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { Ref, ref } from "vue";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   UserCredential,
-  getAdditionalUserInfo,
-  getRedirectResult,
 } from "firebase/auth";
 
 import { useRouter } from "vue-router";
-import firebase from "firebase/compat/app";
 
-const email: string = ref("");
-const password: string = ref("");
+const email: Ref<string> = ref("");
+const password: Ref<string> = ref("");
 const router: any = useRouter();
 
-const register: void = () => {
+const register = (): void => {
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then((data: any) => {
+    .then(() => {
       console.log("Successfully registered");
       router.push("/feed");
     })
@@ -33,8 +30,8 @@ const signUpWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result: UserCredential) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
+      // const credential = GoogleAuthProvider.credentialFromResult(result);
+      // const token = credential?.accessToken;
 
       const user = result.user;
       alert(user.displayName);
@@ -49,41 +46,7 @@ const signUpWithGoogle = () => {
       alert(err.message);
       // const credential = GoogleAuthProvider.credentialFromError(err);
     });
-  // const provider = new GoogleAuthProvider();
-  // const auth = getAuth();
-  // getRedirectResult(auth, provider)
-  //   .then((result) => {
-  //     // This gives you a Google Access Token. You can use it to access Google APIs.
-  //     const credential = GoogleAuthProvider.credentialFromResult(result);
-  //     const token = credential.accessToken;
-
-  //     // The signed-in user info.
-  //     const user = result.user;
-  //     // IdP data available using getAdditionalUserInfo(result)
-  //     // ...
-  //     alert(user.displayName);
-  //   })
-  //   .catch((error) => {
-  //     // Handle Errors here.
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     // The email of the user's account used.
-  //     const email = error.customData.email;
-  //     // The AuthCredential type that was used.
-  //     const credential = GoogleAuthProvider.credentialFromError(error);
-  //     // ...
-  //   });
 };
-
-//  const signUpWithGoogle = ():void => {
-//    const provider = new GoogleAuthProvider();
-//   firebase.auth().signInWithPopup(provider).then(function (result) {
-//     const { isNewUser } = getAdditionalUserInfo(result)
-//   const {additionalUserInfo: {isNewUser}} = result;
-
-//   console.log(isNewUser ? "This user just registered" : "Existing User")
-// })
-//  }
 </script>
 
 <template>

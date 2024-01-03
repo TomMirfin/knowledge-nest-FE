@@ -5,12 +5,12 @@ import { getArticles } from "../components/axios.js";
 import axios from "axios";
 
 interface ArticleData {
-  "id": string,
-"username": string,
-"title": string,
-"topic": string,
-"body": string,
-"created_at": any
+  id: string;
+  username: string;
+  title: string;
+  topic: string;
+  body: string;
+  created_at: any;
 }
 export default {
   name: "Feed",

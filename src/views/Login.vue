@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref,Ref } from "vue";
+import { ref, Ref } from "vue";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -14,9 +14,9 @@ const password: Ref<string> = ref("");
 const router: any = useRouter();
 const errMsg: Ref<any> = ref();
 
-const register = ():void => {
+const register = (): void => {
   signInWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then((data: any) => {
+    .then(() => {
       console.log("Successfully registered");
       router.push("/feed");
     })
@@ -51,7 +51,8 @@ const signInWithGoogle = (): void => {
       console.log(err.code);
       alert(err.message);
     });
-};</script>
+};
+</script>
 
 <template>
   <h1>Sign In to an Account</h1>
