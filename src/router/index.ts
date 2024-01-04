@@ -9,7 +9,7 @@ import Login from "../views/Login.vue";
 import Home from "../views/Home.vue";
 import Feed from "../views/Feed.vue";
 import Article from "../views/Article.vue";
-// import Feed from "../views/Feed.vue"
+import Profile from "../components/Profile.vue";
 import { Unsubscribe, getAuth, onAuthStateChanged } from "firebase/auth";
 import ErrorPage from "../views/ErrorPage.vue";
 import Success from "../views/Success.vue";
@@ -47,6 +47,12 @@ const routes: RouteRecordRaw[] = [
     meta: {
       requiresAuth: true,
     },
+  },
+  {
+    path: "/user/:user_id",
+    name: "Profile",
+    component: Profile,
+    props: true,
   },
   {
     path: "/articles/:article_id",

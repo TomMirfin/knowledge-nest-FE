@@ -8,3 +8,7 @@ export const getArticles = () => {
   console.log(axios.get("/articles"));
   return axios.get("/articles");
 };
+
+export const getUserById = (user_id) => {
+  return axios.get(`/users/${user_id}`);
+};
