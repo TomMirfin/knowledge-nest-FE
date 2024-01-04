@@ -55,6 +55,12 @@ const routes: RouteRecordRaw[] = [
     props: true,
   },
   {
+    path: "/userProfile",
+    name: "userProfile",
+    component: Profile,
+    props: true,
+  },
+  {
     path: "/articles/:article_id",
     name: "Article",
     component: Article,
