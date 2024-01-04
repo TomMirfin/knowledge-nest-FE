@@ -34,7 +34,7 @@ export default {
   >
     <p v-if="loading" class="text-xl font-bold">Loading...</p>
     <div
-      class="w-full max-w-md p-4 bg-gray-200 rounded-lg shadow-lg text-gray-800"
+      class="flex-grow max-w-md p-4 bg-gray-200 rounded-lg shadow-lg text-gray-800"
     >
       <div class="flex flex-col items-center">
         <img />

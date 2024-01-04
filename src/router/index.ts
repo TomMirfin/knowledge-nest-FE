@@ -81,10 +81,17 @@ const getCurrentUser = (): Promise<any> => {
 
 router.beforeEach(async (to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (await getCurrentUser) {
-      next();
-    } else {
-      alert("You don't have access!");
+    try {
+      const user = await getCurrentUser();
+      if (user) {
+        next();
+      } else {
+        alert("You don't have access!");
+        next("/");
+      }
+    } catch (error) {
+      console.error("Error getting current user:", error);
+      alert("An error occurred while checking authentication.");
       next("/");
     }
   } else {
