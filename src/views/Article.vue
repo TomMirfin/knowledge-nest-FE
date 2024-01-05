@@ -1,16 +1,19 @@
 <script lang="ts">
+import { getArticleByArticleId } from "../components/axios";
+
 export default {
   name: "Article",
-  //   data(){
-  //     return {post:undefined}
-  //   }
+  data() {
+    return { post: undefined };
+  },
   mounted() {
     console.log(this.$route.params.article_id);
 
     //GET POST BY POST ID
-    // getPostDataByID(this.$route.params.article_id).then((res)=>{
-    //     this.post = res.data
-    // })
+    getArticleByArticleId(this.$route.params.article_id).then((res) => {
+      console.log("yippie!");
+      this.post = res.data;
+    });
   },
 };
 </script>

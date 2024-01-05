@@ -11,11 +11,10 @@ export const postArticle = (newArticle) => {
   return axios.post("/articles", newArticle);
 };
 
-
-
-
-
-
 export const getUserById = (user_id) => {
   return axios.get(`/users/${user_id}`);
+};
+
+export const getArticleByArticleId = (article_id) => {
+  return axios.get(`articles/${article_id}`);
 };
