@@ -26,7 +26,7 @@ const register = (): void => {
     });
 };
 
-const signUpWithGoogle = () => {
+const signUpWithGoogle = (): void => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result: UserCredential) => {

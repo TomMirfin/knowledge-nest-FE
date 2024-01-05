@@ -5,7 +5,7 @@ import { useRouter } from "vue-router";
 
 const isLoggedIn = ref(false);
 
-let auth;
+let auth: any;
 
 const router: any = useRouter();
 
@@ -20,7 +20,7 @@ onMounted(() => {
   });
 });
 
-const handleSignOut = () => {
+const handleSignOut = (): void => {
   signOut(auth).then(() => {
     router.push("/");
   });

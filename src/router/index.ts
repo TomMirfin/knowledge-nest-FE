@@ -9,7 +9,7 @@ import Login from "../views/Login.vue";
 import Home from "../views/Home.vue";
 import Feed from "../views/Feed.vue";
 import Article from "../views/Article.vue";
-// import Feed from "../views/Feed.vue"
+import Profile from "../components/Profile.vue";
 import { Unsubscribe, getAuth, onAuthStateChanged } from "firebase/auth";
 import ErrorPage from "../views/ErrorPage.vue";
 import Success from "../views/Success.vue";
@@ -49,6 +49,18 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
+    path: "/user/:user_id",
+    name: "Profile",
+    component: Profile,
+    props: true,
+  },
+  {
+    path: "/userProfile",
+    name: "userProfile",
+    component: Profile,
+    props: true,
+  },
+  {
     path: "/articles/:article_id",
     name: "Article",
     component: Article,
@@ -75,10 +87,17 @@ const getCurrentUser = (): Promise<any> => {
 
 router.beforeEach(async (to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (await getCurrentUser) {
-      next();
-    } else {
-      alert("You don't have access!");
+    try {
+      const user = await getCurrentUser();
+      if (user) {
+        next();
+      } else {
+        alert("You don't have access!");
+        next("/");
+      }
+    } catch (error) {
+      console.error("Error getting current user:", error);
+      alert("An error occurred while checking authentication.");
       next("/");
     }
   } else {
