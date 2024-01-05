@@ -50,9 +50,16 @@ const signUpWithGoogle = (): void => {
 </script>
 
 <template>
-  <h1>Create an Account</h1>
-  <p><input type="text" placeholder="Email" v-model="email" /></p>
-  <p><input type="password" placeholder="Password" v-model="password" /></p>
-  <p><button @click="register">Submit</button></p>
-  <p><button @click="signUpWithGoogle">Sign In With Google</button></p>
+  <section
+    class="bg-[url('https://images.unsplash.com/photo-1552353617-3bfd679b3bdd?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] w-full min-h-screen bg-center bg-no-repeat flex items-center justify-center"
+  >
+    <div class="bg-slate-200 w-1/4 text-black p-5 rounded-lg shadow-xl lg:h-60">
+      <h1 class="font-bold text-3xl m-4">Create an Account</h1>
+      <p><input type="text" placeholder="Email" v-model="email" /></p>
+      <p><input type="password" placeholder="Password" v-model="password" /></p>
+
+      <p><button @click="register">Submit</button></p>
+      <p><button @click="signUpWithGoogle">Sign In With Google</button></p>
+    </div>
+  </section>
 </template>
