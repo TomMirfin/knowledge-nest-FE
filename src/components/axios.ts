@@ -16,5 +16,6 @@ export const getUserById = (user_id) => {
 };
 
 export const getArticleByArticleId = (article_id) => {
+  console.log("works in the axios file!");
   return axios.get(`articles/${article_id}`);
 };

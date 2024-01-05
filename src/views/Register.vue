@@ -17,11 +17,9 @@ const router: any = useRouter();
 const register = (): void => {
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     .then(() => {
-      console.log("Successfully registered");
       router.push("/feed");
     })
     .catch((err: any) => {
-      console.log(err.code);
       alert(err.message);
     });
 };
@@ -75,7 +73,7 @@ const signUpWithGoogle = (): void => {
       <div class="flex my-3 gap-3">
         <button
           @click="register"
-          class="w-3/4 h-[50px] relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
+          class="w-3/4 h-[50px] relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
         >
           <span
             class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"
@@ -126,11 +124,9 @@ const signUpWithGoogle = (): void => {
               </g>
             </g>
           </svg>
-          <span>Sign up with Google</span>
+          <span>Sign with Google</span>
         </button>
       </div>
     </div>
   </section>
 </template>
-
-

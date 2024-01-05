@@ -131,7 +131,7 @@ const signInWithGoogle = (): void => {
               </g>
             </g>
           </svg>
-          <span>Sign in with Google</span>
+          <span>Sign with Google</span>
         </button>
       </div>
     </div>
