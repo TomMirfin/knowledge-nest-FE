@@ -29,10 +29,14 @@ const handleSignOut = (): void => {
 
 <template>
   <nav
-    class="background h-24 flex justify-between items-center p-5 absolute w-full"
+    class="background h-24 flex justify-between items-center justify-center p-5 absolute w-full"
   >
-    <router-link to="/" class="ml-52">
-      <img src="../src/assets/logo.png" alt="" class="w-14" />
+    <router-link
+      to="/"
+      class="ml-52 flex items-center px-1 pr-1 rounded-md hover:bg-[#073B3A]"
+    >
+      <img src="../src/assets/logo.svg" alt="" class="max-w-8" />
+      <p class="font-bold">Skill Share</p>
     </router-link>
 
     <span v-if="isLoggedIn" class="px-2">
