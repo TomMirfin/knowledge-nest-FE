@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
+import chatapp from "./components/chatapp.vue";
 
 const isLoggedIn = ref(false);
 
@@ -28,6 +29,8 @@ const handleSignOut = (): void => {
 </script>
 
 <template>
+  <chatapp />
+<!--   
   <nav
     class="background h-24 flex justify-between items-center p-5 absolute w-full"
   >
@@ -111,7 +114,7 @@ const handleSignOut = (): void => {
       </router-link>
     </span>
   </nav>
-  <router-view></router-view>
+  <router-view></router-view> -->
 </template>
 
 <style>
