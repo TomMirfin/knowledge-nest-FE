@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "vue-router";
+import { Auth, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { Router, useRouter } from "vue-router";
 
 const isLoggedIn = ref(false);
 
-let auth: any;
+let auth: Auth;
 
-const router: any = useRouter();
+const router: Router = useRouter();
 
 onMounted(() => {
   auth = getAuth();
