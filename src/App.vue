@@ -29,8 +29,8 @@ const handleSignOut = (): void => {
 </script>
 
 <template>
-  <chatapp />
-<!--   
+  
+  
   <nav
     class="background h-24 flex justify-between items-center p-5 absolute w-full"
   >
@@ -114,7 +114,7 @@ const handleSignOut = (): void => {
       </router-link>
     </span>
   </nav>
-  <router-view></router-view> -->
+  <router-view></router-view>
 </template>
 
 <style>
