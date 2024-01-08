@@ -33,7 +33,7 @@ const signUpWithGoogle = (): void => {
 
       const user = result.user;
       alert(user.displayName);
-      console.log(result.user);
+      // console.log(result.user);
       if (result.user.uid) {
         Promise.reject;
       }
@@ -127,6 +127,7 @@ const signUpWithGoogle = (): void => {
           <span>Sign with Google</span>
         </button>
       </div>
+
     </div>
   </section>
 </template>
