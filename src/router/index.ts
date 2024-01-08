@@ -49,7 +49,7 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
-    path: "/user/:user_id",
+    path: "/user/:username",
     name: "Profile",
     component: Profile,
     props: true,
