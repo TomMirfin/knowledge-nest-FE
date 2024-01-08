@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, Ref } from "vue";
+import { ref, Ref, inject } from "vue";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -8,7 +8,6 @@ import {
   UserCredential,
 } from "firebase/auth";
 import { useRouter } from "vue-router";
-
 const email: Ref<string> = ref("");
 const password: Ref<string> = ref("");
 const router: any = useRouter();
@@ -16,7 +15,7 @@ const errMsg: Ref<any> = ref();
 
 const register = (): void => {
   signInWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then(() => {
+    .then((res) => {
       console.log("Successfully registered");
       router.push("/feed");
     })
