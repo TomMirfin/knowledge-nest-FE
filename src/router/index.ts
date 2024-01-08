@@ -9,10 +9,12 @@ import Login from "../views/Login.vue";
 import Home from "../views/Home.vue";
 import Feed from "../views/Feed.vue";
 import Article from "../views/Article.vue";
+import chatapp from "../components/chatapp.vue"
 import Profile from "../components/Profile.vue";
 import { Unsubscribe, getAuth, onAuthStateChanged } from "firebase/auth";
 import ErrorPage from "../views/ErrorPage.vue";
 import Success from "../views/Success.vue";
+
 
 const routes: RouteRecordRaw[] = [
   {
@@ -64,6 +66,11 @@ const routes: RouteRecordRaw[] = [
     path: "/articles/:article_id",
     name: "Article",
     component: Article,
+  },
+  {
+    path: "/chatapp",
+    name: "ChatApp",
+    component: chatapp,
   },
 ];
 
