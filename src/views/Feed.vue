@@ -37,7 +37,6 @@ export default {
   mounted() {
     this.isLoaded = true;
     getArticles().then((res: any) => {
-      console.log(res);
       this.articles = res.data.articles;
       this.isLoaded = false;
     });

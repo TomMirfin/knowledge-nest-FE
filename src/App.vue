@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "vue-router";
+import { Auth, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { Router, useRouter } from "vue-router";
 
 const isLoggedIn = ref(false);
 
-let auth: any;
+let auth: Auth;
 
-const router: any = useRouter();
+const router: Router = useRouter();
 
 onMounted(() => {
   auth = getAuth();
@@ -29,16 +29,19 @@ const handleSignOut = (): void => {
 
 <template>
   <nav
-    class="background h-24 flex justify-between items-center p-5 absolute w-full"
+    class="background h-24 flex justify-between items-center justify-center p-5 absolute w-full"
   >
-    <router-link to="/" class="ml-52">
-      <img src="../src/assets/logo.png" alt="" class="w-14" />
+    <router-link
+      to="/"
+      class="ml-52 flex items-center px-1 pr-1 rounded-md hover:bg-[#073B3A]"
+    >
+      <img src="../src/assets/logo.svg" alt="" class="max-w-8" />
+      <p class="font-bold">Skill Share</p>
     </router-link>
 
     <span v-if="isLoggedIn" class="px-2">
       <router-link to="/feed">
         <button
-          href="#_"
           class="mx-2 relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
         >
           <span
