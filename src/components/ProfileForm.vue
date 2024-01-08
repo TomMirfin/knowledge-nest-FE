@@ -24,7 +24,7 @@ async function handleFormSubmitted(data: UserPreference) {
 </script>
 
 <template>
-  <FormKit type="form" @submit="handleFormSubmitted" ref="form">
+  <FormKit type="form" class="color" @submit="handleFormSubmitted" ref="form">
     <FormKit
       :value="userProfile.skills"
       type="checkbox"
@@ -40,7 +40,7 @@ async function handleFormSubmitted(data: UserPreference) {
         'Local Tour Guide',
         'Baby Sitter',
       ]"
-      help="Select your skills to add"
+      help="Select your skills"
     />
     <FormKit
       :value="userProfile.interests"
@@ -76,10 +76,11 @@ async function handleFormSubmitted(data: UserPreference) {
   border-radius: 0.25em;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
   background-color: #8d2c2c;
+  color: #000;
 }
 
 .toast li {
   margin-bottom: 0 !important;
-  color: white !important;
+  color: #000;
 }
 </style>
