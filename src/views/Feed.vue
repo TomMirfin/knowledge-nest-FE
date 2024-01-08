@@ -38,7 +38,6 @@ export default {
     this.isLoaded = true;
     getArticles().then((res: any) => {
       console.log(res);
-      console.log("we get this far!");
       this.articles = res.data.articles;
       this.isLoaded = false;
     });
