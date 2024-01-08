@@ -9,13 +9,12 @@ import Login from "../views/Login.vue";
 import Home from "../views/Home.vue";
 import Feed from "../views/Feed.vue";
 import Article from "../views/Article.vue";
-import chatapp from "../components/chatapp.vue"
+import chatapp from "../components/chatapp.vue";
 import Profile from "../components/Profile.vue";
 import { Unsubscribe, getAuth, onAuthStateChanged } from "firebase/auth";
 import ErrorPage from "../views/ErrorPage.vue";
 import Success from "../views/Success.vue";
 import CreateProfile from "../views/CreateProfile.vue";
-
 
 const routes: RouteRecordRaw[] = [
   {
@@ -69,15 +68,14 @@ const routes: RouteRecordRaw[] = [
     component: Article,
   },
   {
-
     path: "/createYourUser",
     name: "createYourUser",
     component: CreateProfile,
-
+  },
+  {
     path: "/chatapp",
     name: "ChatApp",
     component: chatapp,
-
   },
 ];
 
