@@ -11,22 +11,23 @@ export default {
   },
   setup() {
     const route: RouteLocationNormalizedLoaded = useRoute();
-    const userProfile: Ref<UserPreference | undefined> = ref();
+    const userProfile: Ref<UserPreference | undefined> = ref<UserPreference>();
     const loading: Ref<boolean> = ref(false);
     const edit: Ref<boolean> = ref(false);
 
-    const handleFormSubmitted = (formData: any) => {
+    const handleFormSubmitted = async (formData: any) => {
       console.log("Form submitted:", formData);
-      onMounted(() => {
-        loading.value = true;
+      try {
         const username: string | string[] = route.params.username;
         if (username) {
-          getUserByUsername(username).then((res: any) => {
-            loading.value = false;
-            userProfile.value = res.data;
-          });
+          const res = await getUserByUsername(username);
+          userProfile.value = res.data;
         }
-      });
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      } finally {
+        loading.value = false;
+      }
     };
 
     onMounted(() => {

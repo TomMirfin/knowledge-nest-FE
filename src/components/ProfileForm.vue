@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FormKitMessages } from "@formkit/vue";
 import { UserPreference } from "./../types/type";
-import { patchUserByUser } from "./axios";
+import { patchUserByUser } from "./axios.ts";
 import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
 
 const form = ref(null);
@@ -10,13 +9,14 @@ defineProps(["userProfile"]);
 const route: RouteLocationNormalizedLoaded = useRoute();
 const username: string | string[] = route.params.username;
 
-async function handleFormSubmitted(data: UserPreference, node: any) {
+async function handleFormSubmitted(data: UserPreference) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   console.log(JSON.stringify(data));
+  const patchBody = { interests: data.interests, skills: data.skills };
 
   try {
-    const response = await patchUserByUser(username, data);
-    console.log(response.data);
+    const response = await patchUserByUser(username, patchBody);
+    console.log(response);
   } catch (error) {
     console.error("Error updating user:", error);
   }
