@@ -11,6 +11,7 @@ export const postArticle = (newArticle: object) => {
   return axios.post("/articles", newArticle);
 };
 
+
 export const getUserById = (user_id: string) => {
   return axios.get(`/users/${user_id}`);
 };
@@ -21,6 +22,7 @@ export const getUserByUsername = (username: string) => {
 export const patchUserByUser = (username: string, patchBody: object) => {
   // console.log(username);
   // console.log(patchBody);
+
   return axios.put(`/users/${username}`, patchBody);
 };
 
