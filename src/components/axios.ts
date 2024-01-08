@@ -14,6 +14,7 @@ export const postArticle = (newArticle) => {
 
 export const getUserById = (user_id) => {
   return axios.get(`/users/${user_id}`);
+}
 
 export const getUserByUsername = (username) => {
   return axios.get(`/users/username/${username}`);
