@@ -128,14 +128,7 @@ export default {
           {{ edit ? "Save Changes" : "Edit: Skills/Interests" }}
         </button>
       </p>
-      <p>
-        <!-- <button
-          @click="comments"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
-        >
-          View Comments
-        </button> -->
-      </p>
+      <p></p>
       <Reviews />
     </div>
   </div>

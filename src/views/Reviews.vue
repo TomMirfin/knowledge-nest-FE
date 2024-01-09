@@ -2,8 +2,7 @@
 import { onMounted } from "vue";
 import { getReviews, postReview } from "../components/axios";
 import { ref } from "vue";
-import { useRoute } from "vue-router";
-import { watch } from "vue";
+import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
 const username: string | string[] = route.params.username;
@@ -11,6 +10,7 @@ const username: string | string[] = route.params.username;
 const seeComments = ref(false);
 const addComments = ref(false);
 const reviewResponse = ref([]);
+const loading = ref(false);
 const review = ref({ body: "", rating: 5, title: "" });
 const userStored = JSON.parse(localStorage.getItem("user"));
 
@@ -20,6 +20,7 @@ const toggleComment = () => {
 
 const toggleAddComment = () => {
   addComments.value = !addComments.value;
+  loading.value = true;
 };
 
 const handleSubmit = async () => {
@@ -39,6 +40,7 @@ const handleSubmit = async () => {
 };
 
 onMounted(async () => {
+  loading.value = false;
   const data = await getReviews(username);
   reviewResponse.value = data.data.reviews;
 });
@@ -112,6 +114,7 @@ onMounted(async () => {
     v-if="seeComments"
     class="flex-grow max-w-lg p-4 bg-[#073b1748] rounded-lg text-white shadow-2xl"
   >
+    <p v-if="loading">Loading...</p>
     <div
       v-for="reviews in reviewResponse"
       class="bg-white m-5 text-black h-20 w-90 rounded-lg"

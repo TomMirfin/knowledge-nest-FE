@@ -10,7 +10,6 @@ const route: RouteLocationNormalizedLoaded = useRoute();
 const username: string | string[] = route.params.username;
 
 async function handleFormSubmitted(data: UserPreference) {
-  console.log(JSON.stringify(data));
   const patchBody = {
     bio: data.bio,
     interests: data.interests,
