@@ -35,15 +35,12 @@ const signUpWithGoogle = (): void => {
       user.value.username = result.user.displayName;
       user.value.img_url = result.user.photoURL;
       user.value.token = result.user.uid;
-      // console.log(result.user);
-      // console.log(result);
       if (result.user.uid) {
         Promise.reject;
       }
       router.push("/createYourUser");
     })
     .catch((err: any) => {
-      console.log(err.code, "Error here");
       alert(err.message);
       // const credential = GoogleAuthProvider.credentialFromError(err);
     });

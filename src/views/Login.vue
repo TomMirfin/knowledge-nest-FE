@@ -17,12 +17,11 @@ const storedUsername = JSON.parse(localStorage.getItem("user"));
 
 const register = (): void => {
   signInWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then((res) => {
-      console.log("Successfully registered");
+    .then(() => {
+      alert("Successfully Logged In");
       router.push("/feed");
     })
     .catch((err: any) => {
-      console.log(err.code);
       switch (err.code) {
         case "auth/invalid-email":
           errMsg.value = "Invalid email";
@@ -48,7 +47,6 @@ const signInWithGoogle = (): void => {
       user.value.username = storedUsername;
       user.value.img_url = result.user.photoURL;
       user.value.token = result.user.uid;
-      console.log(result);
 
       router.push("/feed");
     })

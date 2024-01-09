@@ -9,7 +9,6 @@ export default {
   mounted() {
     //GET POST BY POST ID
     getArticleByArticleId(this.$route.params.article_id).then((res) => {
-      console.log("is working!");
       this.post = res.data;
       this.loading = false;
     });

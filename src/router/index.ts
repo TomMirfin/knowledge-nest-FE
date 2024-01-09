@@ -108,7 +108,6 @@ router.beforeEach(async (to, from, next) => {
         next("/");
       }
     } catch (error) {
-      console.error("Error getting current user:", error);
       alert("An error occurred while checking authentication.");
       next("/");
     }

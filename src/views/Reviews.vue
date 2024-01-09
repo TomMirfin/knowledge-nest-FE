@@ -32,7 +32,6 @@ const handleSubmit = async () => {
   };
 
   await postReview(postBody).then((res) => {
-    console.log(res.data);
     if (res.data.title) alert("review sent");
     else alert("review failed to send");
     reviewResponse.value = [res.data, ...reviewResponse.value];

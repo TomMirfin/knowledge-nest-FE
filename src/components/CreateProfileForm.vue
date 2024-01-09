@@ -19,14 +19,11 @@ function handleFormSubmitted(data) {
     token: token,
     img_url: user.value.img_url,
   };
-  //   console.log(postBody);
+
   user.value.username = postBody.username;
   postUser(postBody).then((res) => {
     localStorage.setItem("user", JSON.stringify(postBody.username));
     sessionStorage.setItem("user", postBody);
-    console.log(res);
-    console.log(res.data);
-
     router.push("/feed");
   });
   //after post body

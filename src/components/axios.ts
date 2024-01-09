@@ -19,13 +19,10 @@ export const getUserByUsername = (username: string) => {
 };
 
 export const patchUserByUser = (username: string, patchBody: object) => {
-  // console.log(username);
-  // console.log(patchBody);
   return axios.put(`/users/${username}`, patchBody);
 };
 
 export const getArticleByArticleId = (article_id: string) => {
-  // console.log("works in the axios file!");
   return axios.get(`articles/${article_id}`);
 };
 
@@ -38,6 +35,5 @@ export const getReviews = (username: string) => {
 };
 
 export const postReview = (postBody) => {
-  console.log(postBody);
   return axios.post("/reviews", postBody);
 };

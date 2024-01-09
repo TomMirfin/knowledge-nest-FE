@@ -17,10 +17,8 @@ export default {
     const loading: Ref<boolean> = ref(false);
     const edit: Ref<boolean> = ref(false);
     const userStored = JSON.parse(localStorage.getItem("user"));
-    console.log(userStored);
 
     const handleFormSubmitted = async (formData: any) => {
-      console.log("Form submitted:", formData);
       try {
         const username: string | string[] = route.params.username;
         if (username) {

@@ -18,8 +18,7 @@ async function handleFormSubmitted(data: UserPreference) {
   };
 
   try {
-    const response = await patchUserByUser(username, patchBody);
-    console.log(response);
+    await patchUserByUser(username, patchBody);
   } catch (error) {
     console.error("Error updating user:", error);
   }
