@@ -23,12 +23,12 @@ export default {
 
   setup() {
     const user = inject("user", { default: {} });
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    // const storedUser = JSON.parse(localStorage.getItem("user"));
     const newArticle = ref({
       title: "",
       body: "",
       topic: "",
-      username: storedUser,
+      username: user.value.username,
     });
 
     return { newArticle };
