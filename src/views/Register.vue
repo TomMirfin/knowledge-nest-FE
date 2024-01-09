@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref, ref } from "vue";
+import { Ref, ref, inject } from "vue";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 
 import { useRouter } from "vue-router";
+const user = inject("user", { default: {} });
 
 const email: Ref<string> = ref("");
 const password: Ref<string> = ref("");
@@ -16,8 +17,8 @@ const router: any = useRouter();
 
 const register = (): void => {
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then(() => {
-      router.push("/feed");
+    .then((res) => {
+      router.push("/createYourUser");
     })
     .catch((err: any) => {
       alert(err.message);
@@ -28,16 +29,18 @@ const signUpWithGoogle = (): void => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result: UserCredential) => {
-      // const credential = GoogleAuthProvider.credentialFromResult(result);
-      // const token = credential?.accessToken;
-
-      const user = result.user;
-      alert(user.displayName);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      //SET GLOBAL USER CONTEXT
+      user.value.username = result.user.displayName;
+      user.value.img_url = result.user.photoURL;
+      user.value.token = result.user.uid;
       // console.log(result.user);
+      // console.log(result);
       if (result.user.uid) {
         Promise.reject;
       }
-      router.push("/feed");
+      router.push("/createYourUser");
     })
     .catch((err: any) => {
       console.log(err.code, "Error here");
@@ -127,7 +130,6 @@ const signUpWithGoogle = (): void => {
           <span>Sign with Google</span>
         </button>
       </div>
-
     </div>
   </section>
 </template>

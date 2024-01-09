@@ -57,22 +57,22 @@ export default {
 </script>
 <template>
   <div
-    class="flex flex-col items-center justify-center min-h-screen bg-gray-100"
+    class="flex flex-col items-center justify-center min-h-screen bg-[#073b3a] text-center"
   >
     <div
-      class="flex-grow max-w-md p-4 bg-gray-200 rounded-lg shadow-lg text-gray-800"
+      class="flex-grow max-w-lg p-4 bg-[#073b1748] rounded-lg text-white shadow-2xl"
     >
       <div class="flex flex-col items-center">
         <p v-if="loading" class="text-xl font-bold">Loading...</p>
-        <h1 v-if="userProfile" class="mt-4 text-2xl font-bold">
-          {{ userProfile?.username }} Profile
+        <h1 v-if="userProfile" class="mt-4 text-2xl font-bold pt-20 pb-5">
+          {{ userProfile?.username }} 's Profile
         </h1>
         <img
           :src="userProfile?.img_url"
           alt="User Image"
           class="rounded-full h-16 w-16 mb-4"
         />
-        <p class="mt-2 text-gray-600">Web Developer</p>
+        <p class="mt-2 text-white">Web Developer</p>
       </div>
       <ProfileForm v-if="edit" :userProfile="userProfile" />
       <div v-else>
@@ -114,7 +114,6 @@ export default {
           {{ edit ? "Save Changes" : "Edit: Skills/Interests" }}
         </button>
       </p>
-
       <p>
         <!-- <button
           @click="comments"

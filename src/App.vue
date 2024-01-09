@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed, provide } from "vue";
 import { Auth, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { Router, useRouter } from "vue-router";
 
@@ -8,7 +8,12 @@ const isLoggedIn = ref(false);
 let auth: Auth;
 
 const router: Router = useRouter();
-
+const user = ref({
+  id: "",
+  username: "matt1217",
+  token: "",
+  img_url: "https://i.imgur.com/z7eiLjV.png",
+});
 onMounted(() => {
   auth = getAuth();
   onAuthStateChanged(auth, (user) => {
@@ -21,10 +26,13 @@ onMounted(() => {
 });
 
 const handleSignOut = (): void => {
+  localStorage.clear();
   signOut(auth).then(() => {
     router.push("/");
   });
 };
+
+provide("user", user);
 </script>
 
 <template>

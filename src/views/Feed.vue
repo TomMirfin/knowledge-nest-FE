@@ -1,34 +1,44 @@
 <script lang="ts">
+import { inject, ref } from "vue";
 import { getArticles, postArticle } from "../components/axios.js";
 import ArticleCard from "../components/ArticleCard.vue";
-interface ArticleData {
-  id: string;
-  username: string;
-  title: string;
-  topic: string;
-  body: string;
-  created_at: Date | String;
-}
-type newArticle = {
-  title: String;
-  body: String;
-  topic: String;
-  username: String;
-};
+
+// interface ArticleData {
+//   id: string;
+//   username: string;
+//   title: string;
+//   topic: string;
+//   body: string;
+//   created_at: Date | String;
+// }
+// type newArticle = {
+//   title: String;
+//   body: String;
+//   topic: String;
+//   username: String;
+// };
+
 export default {
   name: "Feed",
 
+  setup() {
+    const user = inject("user", { default: {} });
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    console.log(storedUser);
+    const newArticle = ref({
+      title: "",
+      body: "",
+      topic: "",
+      username: storedUser.username,
+    });
+
+    return { newArticle };
+  },
   data() {
     return {
       isOpen: false,
       isLoaded: false,
       articles: [],
-      newArticle: {
-        title: "",
-        body: "",
-        topic: "",
-        username: "",
-      },
     };
   },
   mounted() {
@@ -41,7 +51,7 @@ export default {
   methods: {
     addArticle() {
       //POST LOGIC
-      postArticle(this.newArticle).then((response: any) => {
+      postArticle(this.newArticle).then((response: object) => {
         this.articles.unshift(response.data);
         this.newArticle = { title: "", body: "", topic: "", username: "" };
         this.isOpen = !this.isOpen;
@@ -137,19 +147,6 @@ export default {
                 v-model="newArticle.body"
                 required
               ></textarea>
-            </div>
-          </div>
-
-          <div>
-            <label for="username" class="sr-only">Username</label>
-            <div class="relative">
-              <input
-                type="text"
-                class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                placeholder="Username"
-                v-model="newArticle.username"
-                required
-              />
             </div>
           </div>
 
