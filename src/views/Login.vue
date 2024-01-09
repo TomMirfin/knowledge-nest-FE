@@ -45,7 +45,6 @@ const signInWithGoogle = (): void => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result: UserCredential) => {
-      //
       user.value.username = storedUsername;
       user.value.img_url = result.user.photoURL;
       user.value.token = result.user.uid;

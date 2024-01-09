@@ -43,7 +43,14 @@ export default {
       <div class="max-w-lg mx-4 px-4 ml-10 w-full">
         <p class="text-green-400 font-bold pb-3">{{ post.topic }}</p>
         <h1 class="text-4xl pt-4 font-bold">{{ post.title }}</h1>
-        <p class="mt-4 pt-4 my-4">by: {{ post.username }}</p>
+        <p class="mt-4 pt-4 my-4">
+          by:
+          <router-link
+            class="hover:border-b-2 text-2xl hover:border-green-400"
+            :to="`/user/${post.username}`"
+            >{{ post.username }}</router-link
+          >
+        </p>
 
         <div class="rounded-md bg-slate-50 text-black lg:w-5/6 lg:h-44">
           {{ post.body }}
