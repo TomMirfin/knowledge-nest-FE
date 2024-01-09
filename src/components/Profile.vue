@@ -4,10 +4,12 @@ import { getUserByUsername } from "./axios.ts";
 import { onMounted, ref, Ref } from "vue";
 import ProfileForm from "./ProfileForm.vue";
 import { UserPreference } from "./../types/type";
+import Reviews from "../views/Reviews.vue";
 
 export default {
   components: {
     ProfileForm,
+    Reviews,
   },
   setup() {
     const route: RouteLocationNormalizedLoaded = useRoute();
@@ -136,6 +138,7 @@ export default {
         </button> -->
         </p>
       </div>
+      <Reviews />
     </div>
   </div>
 </template>

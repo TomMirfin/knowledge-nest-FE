@@ -11,7 +11,6 @@ export const postArticle = (newArticle: object) => {
   return axios.post("/articles", newArticle);
 };
 
-
 export const getUserById = (user_id: string) => {
   return axios.get(`/users/${user_id}`);
 };
@@ -33,4 +32,8 @@ export const getArticleByArticleId = (article_id: string) => {
 
 export const postUser = (userObj: object) => {
   return axios.post("/users", userObj);
+};
+
+export const getReviews = (username: string) => {
+  return axios.get("/reviews", username);
 };
