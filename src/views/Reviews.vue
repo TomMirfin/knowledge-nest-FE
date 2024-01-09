@@ -3,6 +3,7 @@ import { onMounted } from "vue";
 import { getReviews, postReview } from "../components/axios";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
+import { watch } from "vue";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
 const username: string | string[] = route.params.username;
@@ -30,7 +31,12 @@ const handleSubmit = async () => {
     rating: review.value.rating,
   };
 
-  await postReview(postBody);
+  await postReview(postBody).then((res) => {
+    console.log(res.data);
+    if (res.data.title) alert("review sent");
+    else alert("review failed to send");
+    reviewResponse.value = [res.data, ...reviewResponse.value];
+  });
 };
 
 onMounted(async () => {
