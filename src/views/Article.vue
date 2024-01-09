@@ -1,5 +1,6 @@
 <script lang="ts">
 import { getArticleByArticleId } from "../components/axios";
+import ChatButton from "../components/ChatButton.vue";
 export default {
   name: "Article",
   data() {
@@ -13,6 +14,7 @@ export default {
       this.loading = false;
     });
   },
+  components: { ChatButton },
 };
 </script>
 
@@ -48,7 +50,6 @@ export default {
         <div class="rounded-md bg-slate-50 text-black lg:w-5/6 lg:h-44">
           {{ post.body }}
         </div>
-
         <div>
           <button
             class="mt-4 relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
@@ -58,6 +59,7 @@ export default {
             ></span>
             <span class="relative">Get in Touch</span>
           </button>
+          <ChatButton :username="post.username"></ChatButton>
         </div>
       </div>
       <div class="max-w-lg mx-4 px-4">
