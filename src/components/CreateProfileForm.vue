@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, inject } from "vue";
-import { UserPreference } from "./../types/type";
+// import { UserPreference } from "./../types/type";
 import { postUser } from "./axios";
 import { useRouter } from "vue-router";
 

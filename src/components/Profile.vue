@@ -89,7 +89,7 @@ export default {
         <p class="mt-2 text-white">Web Developer</p>
       </div>
       <ProfileForm v-if="edit" :userProfile="userProfile" />
-      <div v-else>
+      <div v-else-if="userProfile">
         <div class="mt-8">
           <h2 class="text-lg font-bold">Bio</h2>
           <p class="mt-2 text-gray-600">

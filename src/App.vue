@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, computed, provide } from "vue";
+import { onMounted, ref, provide } from "vue";
 import { Auth, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { Router, useRouter } from "vue-router";
 
