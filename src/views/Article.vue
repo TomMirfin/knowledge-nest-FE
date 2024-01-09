@@ -1,6 +1,5 @@
 <script lang="ts">
 import { getArticleByArticleId } from "../components/axios";
-import { ref } from "vue";
 export default {
   name: "Article",
   data() {

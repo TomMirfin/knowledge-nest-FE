@@ -10,7 +10,6 @@ import "firebase/firestore";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import Filter from "bad-words";
-import config from "../formkit.config.ts";
 
 const firebaseConfig: FirebaseOptions = {
   apiKey: import.meta.env.VUE_APP_FIREBASE_API_KEY || "api-key-not-set",
@@ -34,13 +33,7 @@ export function useAuth() {
   onUnmounted(unsubscribe);
   const isLogin = computed(() => user.value !== null);
 
-  const signIn = async () => {
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
-    await auth.signInWithPopup(googleProvider);
-  };
-  const signOut = () => auth.signOut();
-
-  return { user, isLogin, signIn, signOut };
+  return { user, isLogin };
 }
 
 const firestore = firebase.firestore();
@@ -78,6 +71,6 @@ export function useChat() {
 const app: App = createApp(App);
 
 app.use(router);
-app.use(plugin, defaultConfig(config));
+app.use(plugin, defaultConfig);
 
 app.mount("#app");

@@ -74,16 +74,14 @@ export default {
         />
         <p class="mt-2 text-gray-600">Web Developer</p>
       </div>
-      <div class="mt-8">
-        <h2 class="text-lg font-bold">Bio</h2>
-        <p class="mt-2 text-gray-600">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-          risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-          ultricies sed, dolor.
-        </p>
-      </div>
       <ProfileForm v-if="edit" :userProfile="userProfile" />
       <div v-else>
+        <div class="mt-8">
+          <h2 class="text-lg font-bold">Bio</h2>
+          <p class="mt-2 text-gray-600">
+            {{ userProfile?.bio }}
+          </p>
+        </div>
         <div class="mt-8">
           <h2 class="text-lg font-bold">Contact Information</h2>
           <ul v-if="userProfile" class="mt-2 text-gray-600">

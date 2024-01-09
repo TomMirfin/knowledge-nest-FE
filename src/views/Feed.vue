@@ -1,8 +1,5 @@
 <script lang="ts">
-// import { fakePosts } from "../Test-data/Posts.js";
-// import InterestForm from "../components/InterestForm.vue";
 import { getArticles, postArticle } from "../components/axios.js";
-import axios from "axios";
 import ArticleCard from "../components/ArticleCard.vue";
 interface ArticleData {
   id: string;
