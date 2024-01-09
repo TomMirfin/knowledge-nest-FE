@@ -44,7 +44,7 @@ async function handleFormSubmitted(data: UserPreference) {
     <FormKit
       :value="userProfile.bio"
       type="text"
-      label="bio"
+      label="Bio"
       name="bio"
       help="Enter Your Bio"
       :classes="{
