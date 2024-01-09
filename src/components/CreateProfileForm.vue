@@ -22,8 +22,8 @@ function handleFormSubmitted(data) {
   //   console.log(postBody);
   user.value.username = postBody.username;
   postUser(postBody).then((res) => {
-    localStorage.setItem("user", JSON.stringify(postBody));
-
+    localStorage.setItem("user", JSON.stringify(postBody.username));
+    sessionStorage.setItem("user", postBody);
     console.log(res);
     console.log(res.data);
 

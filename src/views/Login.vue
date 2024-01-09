@@ -12,6 +12,8 @@ const email: Ref<string> = ref("");
 const password: Ref<string> = ref("");
 const router: any = useRouter();
 const errMsg: Ref<any> = ref();
+const user = inject("user", { default: {} });
+const storedUsername = JSON.parse(localStorage.getItem("user"));
 
 const register = (): void => {
   signInWithEmailAndPassword(getAuth(), email.value, password.value)
@@ -43,13 +45,15 @@ const signInWithGoogle = (): void => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result: UserCredential) => {
-      console.log(result.user);
+      //
+      user.value.username = storedUsername;
+      user.value.img_url = result.user.photoURL;
+      user.value.token = result.user.uid;
+      console.log(result);
+
       router.push("/feed");
     })
-    .catch((err: any) => {
-      console.log(err.code);
-      alert(err.message);
-    });
+    .catch((err: any) => {});
 };
 </script>
 
