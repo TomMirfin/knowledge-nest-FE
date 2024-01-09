@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { getReviews } from "../components/axios";
-import { ref, reactive } from "vue";
+import { getReviews, postReview } from "../components/axios";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
@@ -10,12 +10,27 @@ const username: string | string[] = route.params.username;
 const seeComments = ref(false);
 const addComments = ref(false);
 const reviewResponse = ref([]);
+const review = ref({ body: "", rating: 5, title: "" });
+const userStored = JSON.parse(localStorage.getItem("user"));
+
 const toggleComment = () => {
   seeComments.value = !seeComments.value;
 };
 
 const toggleAddComment = () => {
   addComments.value = !addComments.value;
+};
+
+const handleSubmit = async () => {
+  const postBody = {
+    username: userStored,
+    created_about: username,
+    title: review.value.title,
+    body: review.value.body,
+    rating: review.value.rating,
+  };
+
+  await postReview(postBody);
 };
 
 onMounted(async () => {
@@ -43,29 +58,40 @@ onMounted(async () => {
     v-if="addComments"
     class="flex-grow max-w-lg p-4 bg-[#073b1748] rounded-lg text-white shadow-2xl"
   >
-    <form action="" class="justify-center">
-      <Textarea class="bg-white w-80 h-80 mb-5 text-black rounded-xl" />
+    <form class="justify-center" @submit.prevent="handleSubmit">
+      <label> Title of Review</label>
+      <input v-model="review.title" />
+      <textarea
+        class="bg-white w-80 h-80 mb-5 text-black rounded-xl"
+        v-model="review.body"
+      />
       <p class="font-bold mb-5">Please leave a Rating</p>
       <div class="flex justify-around">
         <label for="1" class="flex flex-col">
           1
-          <input type="radio" name="rating" value="1" />
+          <input type="radio" name="rating" value="1" v-model="review.rating" />
         </label>
         <label for="2" class="flex flex-col">
           2
-          <input type="radio" name="rating" value="2" />
+          <input type="radio" name="rating" value="2" v-model="review.rating" />
         </label>
         <label for="3" class="flex flex-col">
           3
-          <input type="radio" name="rating" value="3" />
+          <input type="radio" name="rating" value="3" v-model="review.rating" />
         </label>
         <label for="4" class="flex flex-col">
           4
-          <input type="radio" name="rating" value="4" />
+          <input type="radio" name="rating" value="4" v-model="review.rating" />
         </label>
         <label for="5" class="flex flex-col">
           5
-          <input type="radio" name="rating" value="5" checked />
+          <input
+            type="radio"
+            name="rating"
+            value="5"
+            checked
+            v-model="review.rating"
+          />
         </label>
       </div>
 

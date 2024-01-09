@@ -36,3 +36,8 @@ export const postUser = (userObj: object) => {
 export const getReviews = (username: string) => {
   return axios.get("/reviews", username);
 };
+
+export const postReview = (postBody) => {
+  console.log(postBody);
+  return axios.post("/reviews", postBody);
+};
