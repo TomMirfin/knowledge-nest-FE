@@ -1,7 +1,7 @@
 <script lang="ts">
 import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
 import { getUserByUsername } from "./axios.ts";
-import { onMounted, ref, Ref } from "vue";
+import { onMounted, ref, Ref, watch } from "vue";
 import ProfileForm from "./ProfileForm.vue";
 import { UserPreference } from "./../types/type";
 import Reviews from "../views/Reviews.vue";
@@ -16,6 +16,8 @@ export default {
     const userProfile: Ref<UserPreference | undefined> = ref<UserPreference>();
     const loading: Ref<boolean> = ref(false);
     const edit: Ref<boolean> = ref(false);
+    const userStored = JSON.parse(localStorage.getItem("user"));
+    console.log(userStored);
 
     const handleFormSubmitted = async (formData: any) => {
       console.log("Form submitted:", formData);
@@ -31,6 +33,17 @@ export default {
         loading.value = false;
       }
     };
+    watch(
+      () => route.params.username,
+      async (newUsername) => {
+        if (newUsername) {
+          loading.value = true;
+          const res = await getUserByUsername(newUsername);
+          userProfile.value = res.data;
+          loading.value = false;
+        }
+      }
+    );
 
     onMounted(() => {
       loading.value = true;
@@ -53,6 +66,7 @@ export default {
       edit,
       toggleEdit,
       handleFormSubmitted,
+      userStored,
     };
   },
 };
@@ -108,7 +122,7 @@ export default {
           </ul>
         </div>
       </div>
-      <p>
+      <p v-if="userProfile?.username === userStored.username">
         <button
           @click="toggleEdit"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
