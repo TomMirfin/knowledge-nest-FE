@@ -26,7 +26,6 @@ onMounted(() => {
 });
 
 const handleSignOut = (): void => {
-  localStorage.clear();
   signOut(auth).then(() => {
     router.push("/");
   });
