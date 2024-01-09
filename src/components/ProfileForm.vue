@@ -10,7 +10,6 @@ const route: RouteLocationNormalizedLoaded = useRoute();
 const username: string | string[] = route.params.username;
 
 async function handleFormSubmitted(data: UserPreference) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
   console.log(JSON.stringify(data));
   const patchBody = { interests: data.interests, skills: data.skills };
 
@@ -24,11 +23,10 @@ async function handleFormSubmitted(data: UserPreference) {
 </script>
 
 <template>
-  <FormKit type="form" class="color" @submit="handleFormSubmitted" ref="form">
+  <FormKit type="form" @submit="handleFormSubmitted" ref="form">
     <FormKit
       :value="userProfile.skills"
       type="checkbox"
-      label="skills"
       validation-label="skills"
       name="skills"
       :options="[
@@ -42,45 +40,23 @@ async function handleFormSubmitted(data: UserPreference) {
       ]"
       help="Select your skills"
     />
-    <FormKit
-      :value="userProfile.interests"
-      type="checkbox"
-      label="interests"
-      validation-label="interests"
-      name="interests"
-      :options="[
-        'Website Developer',
-        'Car Mechanic',
-        'Maths Tutor',
-        'English Tutor',
-        'Accountant',
-        'Local Tour Guide',
-        'Baby Sitter',
-      ]"
-      help="Select your Interest"
-    />
+    <div class="mt-5">
+      <FormKit
+        :value="userProfile.interests"
+        type="checkbox"
+        validation-label="interests"
+        name="interests"
+        :options="[
+          'Website Developer',
+          'Car Mechanic',
+          'Maths Tutor',
+          'English Tutor',
+          'Accountant',
+          'Local Tour Guide',
+          'Baby Sitter',
+        ]"
+        help="Select your Interest"
+      />
+    </div>
   </FormKit>
 </template>
-
-<style>
-.toast {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  padding: 1rem;
-}
-
-.toast > * {
-  padding: 0.75em;
-  border-radius: 0.25em;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
-  background-color: #8d2c2c;
-  color: #000;
-}
-
-.toast li {
-  margin-bottom: 0 !important;
-  color: #000;
-}
-</style>
