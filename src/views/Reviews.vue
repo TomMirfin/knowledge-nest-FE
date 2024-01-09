@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { getReviews } from "../components/axios";
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import { useRoute } from "vue-router";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
@@ -21,7 +21,6 @@ const toggleAddComment = () => {
 onMounted(async () => {
   const data = await getReviews(username);
   reviewResponse.value = data.data.reviews;
-  console.log(data.data.reviews);
 });
 </script>
 
@@ -45,7 +44,7 @@ onMounted(async () => {
     class="flex-grow max-w-lg p-4 bg-[#073b1748] rounded-lg text-white shadow-2xl"
   >
     <form action="" class="justify-center">
-      <Textarea class="bg-white w-80 h-80 mb-5 text-black" />
+      <Textarea class="bg-white w-80 h-80 mb-5 text-black rounded-xl" />
       <p class="font-bold mb-5">Please leave a Rating</p>
       <div class="flex justify-around">
         <label for="1" class="flex flex-col">

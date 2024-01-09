@@ -5,13 +5,18 @@ import { patchUserByUser } from "./axios.ts";
 import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
 
 const form = ref(null);
-defineProps(["userProfile"]);
+const prop = defineProps(["userProfile"]);
+console.log(prop.userProfile);
 const route: RouteLocationNormalizedLoaded = useRoute();
 const username: string | string[] = route.params.username;
 
 async function handleFormSubmitted(data: UserPreference) {
   console.log(JSON.stringify(data));
-  const patchBody = { interests: data.interests, skills: data.skills };
+  const patchBody = {
+    bio: data.bio,
+    interests: data.interests,
+    skills: data.skills,
+  };
 
   try {
     const response = await patchUserByUser(username, patchBody);
@@ -23,7 +28,35 @@ async function handleFormSubmitted(data: UserPreference) {
 </script>
 
 <template>
-  <FormKit type="form" @submit="handleFormSubmitted" ref="form">
+  <FormKit
+    type="form"
+    @submit="handleFormSubmitted"
+    ref="form"
+    :classes="{
+      label: 'block mb-1 font-bold text-sm',
+      inner:
+        'max-w-md border border-gray-400 rounded-lg mb-1 overflow-hidden focus-within:border-blue-500',
+      input:
+        'w-full h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
+      help: 'text-xs text-gray-500',
+    }"
+  >
+    <FormKit
+      :value="userProfile.bio"
+      type="text"
+      label="Bio"
+      name="bio"
+      help="Enter Your Bio"
+      :classes="{
+        outer: 'mb-5',
+        label: 'block mb-1 font-bold text-sm',
+        inner:
+          'max-w-md border border-gray-400 rounded-lg mb-1 overflow-hidden focus-within:border-blue-500',
+        input:
+          'w-full h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
+        help: 'text-xs text-gray-500',
+      }"
+    />
     <FormKit
       :value="userProfile.skills"
       type="checkbox"

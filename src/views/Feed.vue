@@ -1,6 +1,4 @@
 <script lang="ts">
-// import { fakePosts } from "../Test-data/Posts.js";
-// import InterestForm from "../components/InterestForm.vue";
 import { inject, ref } from "vue";
 import { getArticles, postArticle } from "../components/axios.js";
 import ArticleCard from "../components/ArticleCard.vue";
@@ -26,12 +24,11 @@ export default {
   setup() {
     const user = inject("user", { default: {} });
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    console.log(storedUser);
     const newArticle = ref({
       title: "",
       body: "",
       topic: "",
-      username: storedUser.username,
+      username: storedUser,
     });
 
     return { newArticle };

@@ -76,69 +76,55 @@ export default {
         />
         <p class="mt-2 text-white">Web Developer</p>
       </div>
-      <div class="mt-8">
-        <h2 class="text-lg font-bold">Bio</h2>
-        <p class="mt-2 text-white">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-          risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-          ultricies sed, dolor.
-        </p>
-      </div>
-      <div class="mt-5">
-        <ProfileForm v-if="edit" :userProfile="userProfile" />
-
-        <div v-else>
-          <div class="mt-8">
-            <h2 class="text-lg font-bold">Contact Information</h2>
-            <ul v-if="userProfile" class="mt-2 text-white">
-              <li v-if="userProfile.email">Email: {{ userProfile.email }}</li>
-              <li v-else="userProfile.email">Email: No Email</li>
-            </ul>
-          </div>
-          <div class="mt-8">
-            <h2 class="text-lg font-bold">Skills</h2>
-            <ul v-if="userProfile">
-              <li
-                v-for="skill in userProfile?.skills"
-                :key="skill"
-                class="text-white"
-              >
-                {{ skill }}
-              </li>
-            </ul>
-          </div>
-          <div class="mt-8">
-            <h2 class="text-lg font-bold">Interests</h2>
-            <ul v-if="userProfile">
-              <li
-                v-for="interest in userProfile?.interests"
-                :key="interest"
-                class="text-white mt-2"
-              >
-                {{ interest }}
-              </li>
-            </ul>
-          </div>
+      <ProfileForm v-if="edit" :userProfile="userProfile" />
+      <div v-else>
+        <div class="mt-8">
+          <h2 class="text-lg font-bold">Bio</h2>
+          <p class="mt-2 text-gray-600">
+            {{ userProfile?.bio }}
+          </p>
         </div>
-        <p class="text-center">
-          <button
-            @click="toggleEdit"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mt-5"
-          >
-            {{ edit ? "Save Changes" : "Edit: Skills/Interests" }}
-          </button>
-        </p>
-
-        <p>
-          <!-- <button
+        <div class="mt-8">
+          <h2 class="text-lg font-bold">Contact Information</h2>
+          <ul v-if="userProfile" class="mt-2 text-gray-600">
+            <li v-if="userProfile.email">Email: {{ userProfile.email }}</li>
+            <li v-else="userProfile.email">Email: No Email</li>
+          </ul>
+        </div>
+        <div class="mt-8">
+          <h2 class="text-lg font-bold">Skills</h2>
+          <ul v-if="userProfile">
+            <li v-for="skill in userProfile?.skills" :key="skill">
+              {{ skill }}
+            </li>
+          </ul>
+        </div>
+        <div class="mt-8">
+          <h2 class="text-lg font-bold">Interests</h2>
+          <ul v-if="userProfile">
+            <li v-for="interest in userProfile?.interests" :key="interest">
+              {{ interest }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        <button
+          @click="toggleEdit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+        >
+          {{ edit ? "Save Changes" : "Edit: Skills/Interests" }}
+        </button>
+      </p>
+      <p>
+        <!-- <button
           @click="comments"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
         >
           View Comments
         </button> -->
-        </p>
-      </div>
-      <Reviews />
+      </p>
     </div>
+    <Reviews />
   </div>
 </template>
