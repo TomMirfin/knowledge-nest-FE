@@ -16,7 +16,14 @@ export default {
       </span>
     </div>
 
-    <p class="mt-2 px-3">by: {{ props.username }}</p>
+    <p class="mt-2 px-3">
+      by:
+      <router-link
+        class="hover:border-b-2 text-xl hover:border-green-400"
+        :to="`/user/${props.username}`"
+        >{{ props.username }}</router-link
+      >
+    </p>
     <div
       v-if="props.body.length > 50"
       class="bg-white mt-2 h-32 text-black px-2 pt-2"

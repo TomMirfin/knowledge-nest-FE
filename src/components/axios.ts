@@ -21,7 +21,6 @@ export const getUserByUsername = (username: string) => {
 export const patchUserByUser = (username: string, patchBody: object) => {
   // console.log(username);
   // console.log(patchBody);
-
   return axios.put(`/users/${username}`, patchBody);
 };
 
