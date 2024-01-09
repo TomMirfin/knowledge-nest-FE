@@ -5,8 +5,7 @@ import { patchUserByUser } from "./axios.ts";
 import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
 
 const form = ref(null);
-const prop = defineProps(["userProfile"]);
-console.log(prop.userProfile);
+defineProps(["userProfile"]);
 const route: RouteLocationNormalizedLoaded = useRoute();
 const username: string | string[] = route.params.username;
 
