@@ -117,7 +117,8 @@ onMounted(async () => {
       v-for="reviews in reviewResponse"
       class="bg-white m-5 text-black h-20 w-90 rounded-lg"
     >
-      <p class="font-bold bg-slate-400">{{ reviews.title }}</p>
+      <p class="font-bold bg-slate-400">Title: {{ reviews.title }}</p>
+      <p class="bg-slate-400">Rating: {{ reviews.rating }} / 5</p>
       <p class="mt-2">{{ reviews.body }}</p>
     </div>
   </section>
