@@ -124,7 +124,7 @@ export default {
           View Comments
         </button> -->
       </p>
+      <Reviews />
     </div>
-    <Reviews />
   </div>
 </template>
