@@ -17,7 +17,10 @@ async function handleFormSubmitted(data: UserPreference) {
   };
 
   try {
-    await patchUserByUser(username, patchBody);
+    await patchUserByUser(username, patchBody).then((res) => {
+      alert("Profile Edited");
+      window.location.reload();
+    });
   } catch (error) {
     console.error("Error updating user:", error);
   }
