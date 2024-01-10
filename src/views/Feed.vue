@@ -1,7 +1,8 @@
 <script lang="ts">
-import { inject, ref } from "vue";
+import { ref } from "vue";
 import { getArticles, postArticle } from "../components/axios.js";
 import ArticleCard from "../components/ArticleCard.vue";
+import { SignIn } from "../types/type";
 
 // interface ArticleData {
 //   id: string;
@@ -22,13 +23,13 @@ export default {
   name: "Feed",
 
   setup() {
-    const user = inject("user", { default: {} });
-    // const storedUser = JSON.parse(localStorage.getItem("user"));
+    // const user = inject("user", { default: {} });
+    const user = JSON.parse(localStorage.getItem("user")!) as SignIn;
     const newArticle = ref({
       title: "",
       body: "",
       topic: "",
-      username: user.value.username,
+      username: user.username,
     });
 
     return { newArticle };

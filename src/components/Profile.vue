@@ -3,7 +3,7 @@ import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
 import { getUserByUsername } from "./axios.ts";
 import { onMounted, ref, Ref, watch } from "vue";
 import ProfileForm from "./ProfileForm.vue";
-import { UserPreference } from "./../types/type";
+import { SignIn, UserPreference } from "./../types/type";
 import Reviews from "../views/Reviews.vue";
 
 export default {
@@ -16,7 +16,7 @@ export default {
     const userProfile: Ref<UserPreference | undefined> = ref<UserPreference>();
     const loading: Ref<boolean> = ref(false);
     const edit: Ref<boolean> = ref(false);
-    const userStored = JSON.parse(localStorage.getItem("user"));
+    const userStored = JSON.parse(localStorage.getItem("user")!) as SignIn;
 
     const handleFormSubmitted = async (formData: any) => {
       try {

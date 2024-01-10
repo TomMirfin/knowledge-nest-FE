@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref, ref, inject } from "vue";
+import { Ref, ref } from "vue";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -9,7 +9,6 @@ import {
 } from "firebase/auth";
 
 import { useRouter } from "vue-router";
-const user = inject("user", { default: {} });
 
 const email: Ref<string> = ref("");
 const password: Ref<string> = ref("");
@@ -29,12 +28,15 @@ const signUpWithGoogle = (): void => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result: UserCredential) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
+      // const credential = GoogleAuthProvider.credentialFromResult(result);
       //SET GLOBAL USER CONTEXT
-      user.value.username = result.user.displayName;
-      user.value.img_url = result.user.photoURL;
-      user.value.token = result.user.uid;
+      const username = result.user.displayName!;
+      const img_url = result.user.photoURL!;
+      const token = result.user.uid;
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ username, img_url, token })
+      );
       if (result.user.uid) {
         Promise.reject;
       }

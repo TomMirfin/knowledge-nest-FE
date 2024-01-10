@@ -3,6 +3,7 @@ import { onMounted } from "vue";
 import { getReviews, postReview } from "../components/axios";
 import { ref } from "vue";
 import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
+import { SignIn } from "../types/type";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
 const username: string | string[] = route.params.username;
@@ -12,7 +13,7 @@ const addComments = ref(false);
 const reviewResponse = ref([]);
 const loading = ref(false);
 const review = ref({ body: "", rating: 5, title: "" });
-const userStored = JSON.parse(localStorage.getItem("user"));
+const userStored = JSON.parse(localStorage.getItem("user")!) as SignIn;
 
 const toggleComment = () => {
   seeComments.value = !seeComments.value;
@@ -25,7 +26,7 @@ const toggleAddComment = () => {
 
 const handleSubmit = async () => {
   const postBody = {
-    username: userStored,
+    username: userStored.username,
     created_about: username,
     title: review.value.title,
     body: review.value.body,

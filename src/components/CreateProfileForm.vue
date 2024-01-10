@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { ref, inject } from "vue";
-// import { UserPreference } from "./../types/type";
+import { ref } from "vue";
 import { postUser } from "./axios";
 import { useRouter } from "vue-router";
+import { SignIn } from "../types/type";
 
 const form = ref(null);
-const user = inject("user", { default: {} });
+const user = JSON.parse(localStorage.getItem("user")!) as SignIn;
 const router: any = useRouter();
+console.log(user);
 
-let token = user.value.token;
+let token = user.token;
 
 function handleFormSubmitted(data) {
   //post request to create a new user with the form details
@@ -17,10 +18,10 @@ function handleFormSubmitted(data) {
     interests: data.interests,
     skills: data.skills,
     token: token,
-    img_url: user.value.img_url,
+    img_url: user.img_url,
   };
 
-  user.value.username = postBody.username;
+  user.username = postBody.username;
   postUser(postBody).then((res) => {
     localStorage.setItem("user", JSON.stringify(postBody.username));
     sessionStorage.setItem("user", postBody);
@@ -33,7 +34,7 @@ function handleFormSubmitted(data) {
 </script>
 
 <template>
-  <h1>Hello Tim</h1>
+  <h1>Hello {{ user.username }}</h1>
   <FormKit type="form" @submit="handleFormSubmitted" ref="form">
     <FormKit
       type="text"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, Ref, inject } from "vue";
+import { ref, Ref } from "vue";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -12,8 +12,6 @@ const email: Ref<string> = ref("");
 const password: Ref<string> = ref("");
 const router: any = useRouter();
 const errMsg: Ref<any> = ref();
-const user = inject("user", { default: {} });
-const storedUsername = JSON.parse(localStorage.getItem("user"));
 
 const register = (): void => {
   signInWithEmailAndPassword(getAuth(), email.value, password.value)
@@ -44,10 +42,13 @@ const signInWithGoogle = (): void => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result: UserCredential) => {
-      user.value.username = storedUsername;
-      user.value.img_url = result.user.photoURL;
-      user.value.token = result.user.uid;
-
+      const username = result.user.displayName!;
+      const img_url = result.user.photoURL!;
+      const token = result.user.uid;
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ username, img_url, token })
+      );
       router.push("/feed");
     })
     .catch((err: any) => {});

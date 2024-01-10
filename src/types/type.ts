@@ -6,3 +6,9 @@ export interface UserPreference {
   skills: string[];
   img_url: string;
 }
+
+export interface SignIn {
+  username: string;
+  img_url: string;
+  token: string;
+}
