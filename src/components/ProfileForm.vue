@@ -30,17 +30,18 @@ async function handleFormSubmitted(data: UserPreference) {
     @submit="handleFormSubmitted"
     ref="form"
     :classes="{
-      label: 'block mb-1 font-bold text-sm',
-      inner:
-        'max-w-md border border-gray-400 rounded-lg mb-1 overflow-hidden focus-within:border-blue-500',
-      input:
-        'w-full h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
-      help: 'text-xs text-gray-500',
+      button: {
+        $reset: true,
+        'my-button': true,
+      },
+      input: {
+        $reset: true,
+      },
     }"
   >
     <FormKit
       :value="userProfile.bio"
-      type="text"
+      type="textarea"
       label="Bio"
       name="bio"
       help="Enter Your Bio"
@@ -90,3 +91,12 @@ async function handleFormSubmitted(data: UserPreference) {
     </div>
   </FormKit>
 </template>
+
+<style>
+.my-button {
+  background-color: #c1c1c1;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 5px;
+}
+</style>

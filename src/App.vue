@@ -15,6 +15,7 @@ const user = ref({
   token: "",
   img_url: "https://i.imgur.com/z7eiLjV.png",
 });
+
 onMounted(() => {
   auth = getAuth();
   onAuthStateChanged(auth, (user) => {
