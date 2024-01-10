@@ -2,14 +2,9 @@
 import { ref } from "vue";
 import { postUser } from "./axios";
 import { useRouter } from "vue-router";
-import { SignIn } from "../types/type";
 
 const form = ref(null);
-const user = JSON.parse(localStorage.getItem("user")!) as SignIn;
 const router: any = useRouter();
-console.log(user);
-
-let token = user.token;
 
 function handleFormSubmitted(data) {
   //post request to create a new user with the form details
@@ -17,14 +12,11 @@ function handleFormSubmitted(data) {
     username: data.username,
     interests: data.interests,
     skills: data.skills,
-    token: token,
-    img_url: user.img_url,
   };
 
-  user.username = postBody.username;
   postUser(postBody).then((res) => {
-    localStorage.setItem("user", JSON.stringify(postBody.username));
-    sessionStorage.setItem("user", postBody);
+    if (res.data.username)
+      localStorage.setItem("user", JSON.stringify(res.data.username));
     router.push("/feed");
   });
   //after post body
@@ -34,7 +26,6 @@ function handleFormSubmitted(data) {
 </script>
 
 <template>
-  <h1>Hello {{ user.username }}</h1>
   <FormKit type="form" @submit="handleFormSubmitted" ref="form">
     <FormKit
       type="text"

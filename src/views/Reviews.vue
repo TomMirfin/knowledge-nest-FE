@@ -26,7 +26,7 @@ const toggleAddComment = () => {
 
 const handleSubmit = async () => {
   const postBody = {
-    username: userStored.username,
+    username: userStored,
     created_about: username,
     title: review.value.title,
     body: review.value.body,

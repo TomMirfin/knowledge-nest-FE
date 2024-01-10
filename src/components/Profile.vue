@@ -17,7 +17,6 @@ export default {
     const loading: Ref<boolean> = ref(false);
     const edit: Ref<boolean> = ref(false);
     const userStored = JSON.parse(localStorage.getItem("user")!) as SignIn;
-
     const handleFormSubmitted = async (formData: any) => {
       try {
         const username: string | string[] = route.params.username;
@@ -120,7 +119,7 @@ export default {
           </ul>
         </div>
       </div>
-      <p v-if="userProfile?.username === userStored.username">
+      <p v-if="userProfile?.username === userStored">
         <button
           @click="toggleEdit"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800"

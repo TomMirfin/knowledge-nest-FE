@@ -42,13 +42,6 @@ const signInWithGoogle = (): void => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result: UserCredential) => {
-      const username = result.user.displayName!;
-      const img_url = result.user.photoURL!;
-      const token = result.user.uid;
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ username, img_url, token })
-      );
       router.push("/feed");
     })
     .catch((err: any) => {});

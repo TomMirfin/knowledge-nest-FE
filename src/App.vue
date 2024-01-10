@@ -28,7 +28,6 @@ onMounted(() => {
 
 const handleSignOut = (): void => {
   signOut(auth).then(() => {
-    localStorage.setItem("user", JSON.stringify(""));
     router.push("/");
   });
 };

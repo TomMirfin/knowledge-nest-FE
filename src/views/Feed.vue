@@ -23,13 +23,12 @@ export default {
   name: "Feed",
 
   setup() {
-    // const user = inject("user", { default: {} });
     const user = JSON.parse(localStorage.getItem("user")!) as SignIn;
     const newArticle = ref({
       title: "",
       body: "",
       topic: "",
-      username: user.username,
+      username: user,
     });
 
     return { newArticle };

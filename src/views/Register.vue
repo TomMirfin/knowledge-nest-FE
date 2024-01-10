@@ -28,15 +28,7 @@ const signUpWithGoogle = (): void => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result: UserCredential) => {
-      // const credential = GoogleAuthProvider.credentialFromResult(result);
       //SET GLOBAL USER CONTEXT
-      const username = result.user.displayName!;
-      const img_url = result.user.photoURL!;
-      const token = result.user.uid;
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ username, img_url, token })
-      );
       if (result.user.uid) {
         Promise.reject;
       }
