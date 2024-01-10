@@ -112,7 +112,11 @@ export default {
         >
           <h2 class="text-lg font-bold">Skills</h2>
           <ul v-if="userProfile && userProfile.skills.length > 0">
-            <li v-for="skill in userProfile?.skills" :key="skill">
+            <li
+              class="mt-2 text-gray-100"
+              v-for="skill in userProfile?.skills"
+              :key="skill"
+            >
               {{ skill }}
             </li>
           </ul>
@@ -123,7 +127,11 @@ export default {
         >
           <h2 class="text-lg font-bold">Interests</h2>
           <ul v-if="userProfile && userProfile.interests.length > 0">
-            <li v-for="interest in userProfile?.interests" :key="interest">
+            <li
+              class="mt-2 text-gray-100"
+              v-for="interest in userProfile?.interests"
+              :key="interest"
+            >
               {{ interest }}
             </li>
           </ul>
