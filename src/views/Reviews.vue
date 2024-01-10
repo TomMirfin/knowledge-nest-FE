@@ -16,8 +16,14 @@ const loading: Ref<boolean> = ref(false);
 const review: Ref<Review> = ref({ body: "", rating: 5, title: "" });
 const userStored: SignIn = JSON.parse(localStorage.getItem("user")!) as SignIn;
 
-const toggleComment = (): void => {
+const toggleComment = async (): Promise<void> => {
   seeComments.value = !seeComments.value;
+  loading.value = true;
+  await getReviews(username).then((res) => {
+    console.log(res.data);
+    reviewResponse.value = res.data.reviews;
+    loading.value = false;
+  });
 };
 
 const toggleAddComment = (): void => {
@@ -41,28 +47,22 @@ const handleSubmit = async (): Promise<void> => {
     review.value = { title: "", body: "", rating: 5 };
   });
 };
-
-onMounted(async () => {
-  loading.value = false;
-  const data = await getReviews(username);
-  reviewResponse.value = data.data.reviews;
-});
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col items-center justify-center mt-3 lg:mt-0">
     <button
       @click="toggleComment"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mt-5 mr-5 mb-2"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800 lg:mt-5 lg:mb-2"
     >
-      Click To see Reviews
+      See Reviews
     </button>
     <button
       v-if="username !== userStored"
       @click="toggleAddComment"
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mt-5"
     >
-      Click To Add Review
+      Add Review
     </button>
   </div>
   <section

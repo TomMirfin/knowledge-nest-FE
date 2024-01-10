@@ -70,18 +70,24 @@ export default {
     class="w-full bg-[#073B3A] flex flex-col justify-center items-center pt-28"
     id="feed"
   >
-    <div class="w-screen px-4 flex justify-around">
-      <div class="max-w-lg mx-4 px-4 ml-10">
-        <h1 class="text-green-400 font-bold pb-3">Most recent posts</h1>
-        <p class="text-4xl pt-4 font-bold">
+    <div
+      class="lg:px-4 flex lg:justify-around justify-center items-center pb-6 mr-4 lg:mr-0"
+    >
+      <div class="max-w-lg lg:mx-4 lg:px-4 ml-10 mx-3">
+        <h1 class="text-green-400 font-bold pb-3 lg:text-left text-center">
+          Most recent posts
+        </h1>
+        <p
+          class="lg:text-4xl lg:pt-4 font-bold text-3xl lg:text-left text-center"
+        >
           Find out what users around you are looking for!
         </p>
-        <p class="mt-4 pt-4">
+        <p class="lg:mt-4 lg:pt-4 lg:text-left text-center">
           Explore the opportunities the community has for you, or find out how
           you could support someone with your set of skills!
         </p>
       </div>
-      <div class="max-w-lg mx-4 px-4">
+      <div class="max-w-lg mx-4 px-4 lg:block hidden">
         <img
           src="../assets/poly.svg
         "
@@ -97,7 +103,7 @@ export default {
 
       <button
         v-on:click="changeForm"
-        class="group inline-block rounded-full bg-green-400 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75 mt-4"
+        class="group inline-block rounded-full bg-green-400 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75 lg:mt-4 my-5"
       >
         <span class="block rounded-full px-8 py-3 text-sm font-medium">
           {{ !isOpen ? "Add a post" : "Nevermind" }}
@@ -159,15 +165,9 @@ export default {
           </div>
         </form>
       </div>
-      <div id="feed-filters" class="mx-9 flex py-3">
-        <p class="text-red-600 pr-2">Sort By</p>
-        <select name="filter" id="filter">
-          <option value="date">Date</option>
-          <option value="user">User</option>
-        </select>
-      </div>
+
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-9 w-full">
-        <div v-for="post in articles" v-bind:key="post.id">
+        <div v-for="post in articles" v-bind:key="post.id" class="px-3">
           <router-link :to="`/articles/${post.id}`">
             <article-card :props="post"></article-card>
           </router-link>

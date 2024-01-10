@@ -39,7 +39,8 @@ export default {
           userProfile.value = res.data;
           loading.value = false;
         }
-      });
+      }
+    );
 
     onMounted(() => {
       loading.value = true;
@@ -72,7 +73,7 @@ export default {
     class="flex flex-col items-center justify-center min-h-screen bg-[#073b3a] text-center"
   >
     <div
-      class="flex-grow max-w-lg p-4 bg-[#073b1748] rounded-lg text-white shadow-2xl"
+      class="flex-grow lg:max-w-lg p-4 bg-[#073b1748] rounded-lg text-white shadow-2xl w-full mx-auto"
     >
       <div class="flex flex-col items-center">
         <p v-if="loading" class="text-xl font-bold">Loading...</p>
@@ -126,7 +127,6 @@ export default {
           {{ edit ? "Save Changes" : "Edit: Skills/Interests" }}
         </button>
       </p>
-      <p></p>
       <Reviews />
     </div>
   </div>

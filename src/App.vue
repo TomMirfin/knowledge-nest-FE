@@ -41,16 +41,16 @@ provide("user", user);
 
 <template>
   <nav
-    class="background h-24 flex justify-between items-center justify-center p-5 absolute w-full"
+    class="background h-24 flex justify-between items-center p-5 absolute w-full"
   >
     <router-link
       to="/"
-      class="ml-52 flex items-center px-1 pr-1 rounded-md hover:bg-[#073B3A]"
+      class="lg:ml-52 flex items-center px-1 pr-1 rounded-md hover:bg-[#073B3A]"
     >
       <img src="../src/assets/logo.svg" alt="" class="max-w-14" />
     </router-link>
 
-    <span v-if="isLoggedIn" class="px-2">
+    <span v-if="isLoggedIn" class="px-2 flex items-center">
       <router-link to="/feed">
         <button
           class="mx-2 relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
@@ -100,7 +100,7 @@ provide("user", user);
         <span class="relative invisible">Sign out</span>
       </button>
     </span>
-    <span class="flex w-56 justify-around" v-else-if="!isLoggedIn">
+    <span class="flex lg:w-56 w-full justify-around" v-else-if="!isLoggedIn">
       <router-link to="/login">
         <button
           class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"

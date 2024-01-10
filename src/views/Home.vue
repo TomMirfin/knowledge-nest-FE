@@ -4,7 +4,7 @@
     class="bg-[url('./assets/pottery.jpg')] w-full min-h-screen bg-center bg-cover flex flex-col items-start justify-center"
   >
     <h1
-      class="px-36 mb-4 text-3xl font-extrabold text-white md:text-5xl lg:text-6xl"
+      class="lg:px-36 lg:mb-4 md:text-3xl font-extrabold text-white text-5xl lg:text-9xl text-center mb-5 md:mb-0"
     >
       Your Local
       <span
@@ -13,7 +13,7 @@
       >
     </h1>
     <p
-      class="mx-36 mr-72 p-5 text-lg bg-white rounded-md font-normal text-black lg:text-xl"
+      class="lg:mx-36 lg:mr-72 lg:p-5 text-lg bg-white rounded-md font-normal text-black mx-auto px-3 my-3 w-2/3"
     >
       Connect with the top professionals in your field and elevate your business
       to new heights. Whether you're looking for freelance designers, software

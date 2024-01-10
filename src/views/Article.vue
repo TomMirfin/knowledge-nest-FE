@@ -32,7 +32,7 @@ export default {
           ...
         </div>
       </div>
-      <div class="max-w-lg mx-4 px-4">
+      <div class="max-w-lg mx-4 px-4 g:block hidden">
         <img
           src="../assets/poly.svg
         "
@@ -40,11 +40,18 @@ export default {
         />
       </div>
     </div>
-    <div v-else class="w-screen px-4 flex justify-around mt-14">
-      <div class="max-w-lg mx-4 px-4 ml-10 w-full">
-        <p class="text-green-400 font-bold pb-3">{{ post.topic }}</p>
-        <h1 class="text-4xl pt-4 font-bold">{{ post.title }}</h1>
-        <p class="mt-4 pt-4 my-4">
+    <div
+      v-else
+      class="w-screen lg:px-4 flex lg:justify-around items-center lg:items-start justify-centermt-14"
+    >
+      <div class="max-w-lg lg:mx-4 lg:px-4 lg:ml-10 w-full px-5">
+        <p class="text-green-400 font-bold pb-3 text-center lg:text-left">
+          {{ post.topic }}
+        </p>
+        <h1 class="text-4xl pt-4 font-bold text-center lg:text-left">
+          {{ post.title }}
+        </h1>
+        <p class="lg:mt-4 pt-4 lg:my-4 text-center lg:text-left">
           by:
           <router-link
             class="hover:border-b-2 text-2xl hover:border-green-400"
@@ -53,12 +60,16 @@ export default {
           >
         </p>
 
-        <div class="rounded-md bg-slate-50 text-black lg:w-5/6 lg:h-44">
+        <div
+          class="rounded-md bg-slate-50 text-black lg:w-5/6 lg:h-44 my-5 p-3"
+        >
           {{ post.body }}
         </div>
-        <div>
+        <div
+          class="flex items-center justify-center lg:items-start lg:justify-start"
+        >
           <button
-            class="mt-4 relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
+            class="flex items-center justify-center mt-4 relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
           >
             <span
               class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"
@@ -69,10 +80,11 @@ export default {
           </button>
         </div>
       </div>
-      <div class="max-w-lg mx-4 px-4">
+      <div class="max-w-lg mx-4 px-4 hidden lg:flex items-start">
         <img
           src="../assets/poly.svg
         "
+          class="lg:w-[600px]"
           alt=""
         />
       </div>

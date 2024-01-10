@@ -52,7 +52,7 @@ const signInWithGoogle = (): void => {
   <section
     class="bg-[url('./assets/pottery.jpg')] w-full min-h-screen bg-center bg-cover flex items-center justify-center"
   >
-    <div class="bg-slate-200 w-1/4 text-black p-5 rounded-lg shadow-xl">
+    <div class="bg-slate-200 lg:w-1/4 text-black p-5 rounded-lg shadow-xl">
       <h1 class="font-bold text-2xl m-4">Sign in with an Account</h1>
       <p>
         <input

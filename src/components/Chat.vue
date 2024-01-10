@@ -24,23 +24,20 @@
           class="h-40 w-1/2 absolute left-[120px] rounded-2xl ml-2"
           required
         />
-        <button type="submit">
-          <SendIcon />
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import SendIcon from "@mui/icons-material/Send";
 import { ref, watch, nextTick } from "vue";
 import { useAuth, useChat } from "../main";
 
 import Message from "./Message.vue";
 
 export default {
-  components: { Message, SendIcon },
+  components: { Message },
   setup() {
     const { user, isLogin } = useAuth();
     const { messages, sendMessage } = useChat();
