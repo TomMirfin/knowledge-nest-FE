@@ -12,3 +12,9 @@ export interface SignIn {
   img_url: string;
   token: string;
 }
+
+export interface Review {
+  body: string;
+  rating: number;
+  title: string;
+}

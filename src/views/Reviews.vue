@@ -3,28 +3,29 @@ import { onMounted } from "vue";
 import { getReviews, postReview } from "../components/axios";
 import { ref } from "vue";
 import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
-import { SignIn } from "../types/type";
+import { Review, SignIn } from "../types/type";
+import { Ref } from "vue";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
 const username: string | string[] = route.params.username;
 
-const seeComments = ref(false);
-const addComments = ref(false);
+const seeComments: Ref<boolean> = ref(false);
+const addComments: Ref<boolean> = ref(false);
 const reviewResponse = ref([]);
-const loading = ref(false);
-const review = ref({ body: "", rating: 5, title: "" });
-const userStored = JSON.parse(localStorage.getItem("user")!) as SignIn;
+const loading: Ref<boolean> = ref(false);
+const review: Ref<Review> = ref({ body: "", rating: 5, title: "" });
+const userStored: SignIn = JSON.parse(localStorage.getItem("user")!) as SignIn;
 
-const toggleComment = () => {
+const toggleComment = (): void => {
   seeComments.value = !seeComments.value;
 };
 
-const toggleAddComment = () => {
+const toggleAddComment = (): void => {
   addComments.value = !addComments.value;
   loading.value = true;
 };
 
-const handleSubmit = async () => {
+const handleSubmit = async (): Promise<void> => {
   const postBody = {
     username: userStored,
     created_about: username,

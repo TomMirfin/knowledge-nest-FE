@@ -9,10 +9,11 @@ const router: any = useRouter();
 function handleFormSubmitted(data) {
   //post request to create a new user with the form details
   const postBody = {
-    username: data.username,
+    username: data.username.toLowerCase(),
     interests: data.interests,
     skills: data.skills,
   };
+  console.log(postBody.username);
 
   postUser(postBody).then((res) => {
     if (res.data.username)
