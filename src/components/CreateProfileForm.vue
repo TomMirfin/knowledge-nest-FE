@@ -26,8 +26,8 @@ function handleFormSubmitted(event) {
   postUser(postBody).then((res) => {
     if (res.data.username)
       localStorage.setItem("user", JSON.stringify(res.data.username));
-    router.push("/feed");
   });
+  router.push("/feed");
 }
 </script>
 
