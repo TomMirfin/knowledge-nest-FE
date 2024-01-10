@@ -11,7 +11,7 @@ const storedUser = JSON.parse(localStorage.getItem("user"));
 const router: Router = useRouter();
 const user = ref({
   id: "",
-  username: storedUser,
+  username: storedUser ? storedUser : "",
   token: "",
   img_url: "https://i.imgur.com/z7eiLjV.png",
 });
@@ -47,8 +47,7 @@ provide("user", user);
       to="/"
       class="ml-52 flex items-center px-1 pr-1 rounded-md hover:bg-[#073B3A]"
     >
-      <img src="../src/assets/logo.svg" alt="" class="max-w-8" />
-      <p class="font-bold">Skill Share</p>
+      <img src="../src/assets/logo.svg" alt="" class="max-w-14" />
     </router-link>
 
     <span v-if="isLoggedIn" class="px-2">
