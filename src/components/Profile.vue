@@ -89,20 +89,26 @@ export default {
       </div>
       <ProfileForm v-if="edit" :userProfile="userProfile" />
       <div v-else-if="userProfile">
-        <div class="mt-8">
+        <div
+          class="mt-8 p-4 border border-blue-900 border-t-1 border-l-0 border-r-0 border-b-0"
+        >
           <h2 class="text-lg font-bold">Bio</h2>
-          <p class="mt-2 text-gray-600">
+          <p class="mt-2 text-gray-100">
             {{ userProfile?.bio }}
           </p>
         </div>
-        <div class="mt-8">
+        <div
+          class="mt-8 p-4 border border-blue-900 border-t-1 border-l-0 border-r-0 border-b-0"
+        >
           <h2 class="text-lg font-bold">Contact Information</h2>
-          <ul v-if="userProfile" class="mt-2 text-gray-600">
+          <ul v-if="userProfile" class="mt-2 text-gray-100">
             <li v-if="userProfile.email">Email: {{ userProfile.email }}</li>
             <li v-else="userProfile.email">Email: No Email</li>
           </ul>
         </div>
-        <div class="mt-8">
+        <div
+          class="mt-8 p-4 border border-blue-900 border-t-1 border-l-0 border-r-0 border-b-1"
+        >
           <h2 class="text-lg font-bold">Skills</h2>
           <ul v-if="userProfile">
             <li v-for="skill in userProfile?.skills" :key="skill">
@@ -110,7 +116,9 @@ export default {
             </li>
           </ul>
         </div>
-        <div class="mt-8">
+        <div
+          class="mt-8 p-4 border border-blue-900 border-t-0 border-l-0 border-r-0 border-b-1"
+        >
           <h2 class="text-lg font-bold">Interests</h2>
           <ul v-if="userProfile">
             <li v-for="interest in userProfile?.interests" :key="interest">

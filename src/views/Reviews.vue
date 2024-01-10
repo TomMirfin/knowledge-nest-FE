@@ -28,7 +28,6 @@ const toggleComment = async (): Promise<void> => {
 
 const toggleAddComment = (): void => {
   addComments.value = !addComments.value;
-  loading.value = true;
 };
 
 const handleSubmit = async (): Promise<void> => {
@@ -112,19 +111,21 @@ const handleSubmit = async (): Promise<void> => {
       </button>
     </form>
   </section>
-
   <section
     v-if="seeComments"
     class="flex-grow max-w-lg p-4 bg-[#073b1748] rounded-lg text-white shadow-2xl"
   >
     <p v-if="loading">Loading...</p>
-    <div
-      v-for="reviews in reviewResponse"
-      class="bg-white m-5 text-black h-20 w-90 rounded-lg"
-    >
-      <p class="font-bold bg-slate-400">Title: {{ reviews.title }}</p>
-      <p class="bg-slate-400">Rating: {{ reviews.rating }} / 5</p>
-      <p class="mt-2">{{ reviews.body }}</p>
+    <div v-if="reviewResponse.length > 0">
+      <div
+        v-for="reviews in reviewResponse"
+        class="bg-white m-5 text-black h-20 w-90 rounded-lg"
+      >
+        <p class="font-bold bg-slate-400">Title: {{ reviews.title }}</p>
+        <p class="bg-slate-400">Rating: {{ reviews.rating }} / 5</p>
+        <p class="mt-2">{{ reviews.body }}</p>
+      </div>
     </div>
+    <p v-else>No Reviews Yet</p>
   </section>
 </template>
