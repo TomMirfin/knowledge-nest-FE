@@ -90,15 +90,16 @@ export default {
       <ProfileForm v-if="edit" :userProfile="userProfile" />
       <div v-else-if="userProfile">
         <div
-          class="mt-8 p-4 border border-blue-900 border-t-1 border-l-0 border-r-0 border-b-0"
+          class="mt-4 p-4 border border-grey-900 border-t-1 border-l-0 border-r-0 border-b-0"
         >
           <h2 class="text-lg font-bold">Bio</h2>
-          <p class="mt-2 text-gray-100">
+          <p v-if="!userProfile?.bio">Bio Empty</p>
+          <p v-else class="mt-2 text-gray-100">
             {{ userProfile?.bio }}
           </p>
         </div>
         <div
-          class="mt-8 p-4 border border-blue-900 border-t-1 border-l-0 border-r-0 border-b-0"
+          class="mt-4 p-4 border border-grey-900 border-t-1 border-l-0 border-r-0 border-b-0"
         >
           <h2 class="text-lg font-bold">Contact Information</h2>
           <ul v-if="userProfile" class="mt-2 text-gray-100">
@@ -107,24 +108,26 @@ export default {
           </ul>
         </div>
         <div
-          class="mt-8 p-4 border border-blue-900 border-t-1 border-l-0 border-r-0 border-b-1"
+          class="mt-4 p-4 border border-grey-900 border-t-1 border-l-0 border-r-0 border-b-1"
         >
           <h2 class="text-lg font-bold">Skills</h2>
-          <ul v-if="userProfile">
+          <ul v-if="userProfile && userProfile.skills.length > 0">
             <li v-for="skill in userProfile?.skills" :key="skill">
               {{ skill }}
             </li>
           </ul>
+          <p v-else>No Skills Selected</p>
         </div>
         <div
-          class="mt-8 p-4 border border-blue-900 border-t-0 border-l-0 border-r-0 border-b-1"
+          class="mt-4 p-4 border border-grey-900 border-t-0 border-l-0 border-r-0 border-b-1"
         >
           <h2 class="text-lg font-bold">Interests</h2>
-          <ul v-if="userProfile">
+          <ul v-if="userProfile && userProfile.interests.length > 0">
             <li v-for="interest in userProfile?.interests" :key="interest">
               {{ interest }}
             </li>
           </ul>
+          <p v-else>No Interests Selected</p>
         </div>
       </div>
       <p v-if="userProfile?.username === userStored">
