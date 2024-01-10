@@ -62,12 +62,12 @@ async function handleFormSubmitted(data: UserPreference) {
       name="skills"
       :options="[
         'Website Developer',
-        'Car Mechanic',
-        'Maths Tutor',
-        'English Tutor',
-        'Accountant',
-        'Local Tour Guide',
-        'Baby Sitter',
+        'Graphic Designer',
+        'Math Teacher',
+        'Fashion Designer',
+        'Tour Guide',
+        'Plumber',
+        'Personal Chef',
       ]"
       help="Select your skills"
     />
@@ -79,12 +79,12 @@ async function handleFormSubmitted(data: UserPreference) {
         name="interests"
         :options="[
           'Website Developer',
-          'Car Mechanic',
-          'Maths Tutor',
-          'English Tutor',
-          'Accountant',
-          'Local Tour Guide',
-          'Baby Sitter',
+          'Graphic Designer',
+          'Math Teacher',
+          'Fashion Designer',
+          'Tour Guide',
+          'Plumber',
+          'Personal Chef',
         ]"
         help="Select your Interest"
       />
