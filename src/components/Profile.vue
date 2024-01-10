@@ -39,8 +39,7 @@ export default {
           userProfile.value = res.data;
           loading.value = false;
         }
-      }
-    );
+      });
 
     onMounted(() => {
       loading.value = true;

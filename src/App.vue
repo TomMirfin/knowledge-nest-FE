@@ -15,7 +15,6 @@ const user = ref({
   token: "",
   img_url: "https://i.imgur.com/z7eiLjV.png",
 });
-console.log(storedUser);
 onMounted(() => {
   auth = getAuth();
   onAuthStateChanged(auth, (user) => {
