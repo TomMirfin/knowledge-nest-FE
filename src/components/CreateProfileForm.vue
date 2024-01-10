@@ -1,27 +1,22 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 import { postUser } from "./axios";
 import { useRouter } from "vue-router";
+import { PostObject } from "../types/type";
 
-const form = ref(null);
 const router: any = useRouter();
-let skills = ref([]);
-let interests = ref([]);
+const skills: Ref<string[]> = ref([]);
+const interests: Ref<string[]> = ref([]);
 
-function handleFormSubmitted(event) {
+function handleFormSubmitted(event: any): void {
   event.preventDefault();
 
-  const formData = new FormData(event.target);
-  console.log(formData);
-  const postBody = {
+  const postBody: PostObject = {
     username: event.target.elements.username.value.toLowerCase(),
     skills: skills.value,
     interests: interests.value,
   };
-  console.log(postBody);
   postBody.username = postBody.username.toLowerCase();
-
-  console.log(postBody.username);
 
   postUser(postBody).then((res) => {
     if (res.data.username)

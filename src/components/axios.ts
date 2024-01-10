@@ -34,6 +34,6 @@ export const getReviews = (username: string) => {
   return axios.get(`/reviews?created_about=${username}`);
 };
 
-export const postReview = (postBody) => {
+export const postReview = (postBody: object) => {
   return axios.post("/reviews", postBody);
 };

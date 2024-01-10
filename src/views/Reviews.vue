@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { getReviews, postReview } from "../components/axios";
 import { ref } from "vue";
 import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
-import { Review, SignIn } from "../types/type";
+import { Review, SignIn, EditReview } from "../types/type";
 import { Ref } from "vue";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
@@ -20,7 +19,6 @@ const toggleComment = async (): Promise<void> => {
   seeComments.value = !seeComments.value;
   loading.value = true;
   await getReviews(username).then((res) => {
-    console.log(res.data);
     reviewResponse.value = res.data.reviews;
     loading.value = false;
   });
@@ -31,7 +29,7 @@ const toggleAddComment = (): void => {
 };
 
 const handleSubmit = async (): Promise<void> => {
-  const postBody = {
+  const postBody: EditReview = {
     username: userStored,
     created_about: username,
     title: review.value.title,

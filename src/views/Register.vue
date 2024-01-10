@@ -16,7 +16,7 @@ const router: any = useRouter();
 
 const register = (): void => {
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then((res) => {
+    .then(() => {
       router.push("/createYourUser");
     })
     .catch((err: any) => {
@@ -36,7 +36,6 @@ const signUpWithGoogle = (): void => {
     })
     .catch((err: any) => {
       alert(err.message);
-      // const credential = GoogleAuthProvider.credentialFromError(err);
     });
 };
 </script>

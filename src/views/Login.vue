@@ -5,7 +5,6 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  UserCredential,
 } from "firebase/auth";
 import { useRouter } from "vue-router";
 const email: Ref<string> = ref("");
@@ -41,10 +40,12 @@ const register = (): void => {
 const signInWithGoogle = (): void => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
-    .then((result: UserCredential) => {
+    .then(() => {
       router.push("/feed");
     })
-    .catch((err: any) => {});
+    .catch(() => {
+      alert("Error when signing in");
+    });
 };
 </script>
 

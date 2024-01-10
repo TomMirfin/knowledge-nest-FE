@@ -16,7 +16,9 @@ export default {
     const userProfile: Ref<UserPreference | undefined> = ref<UserPreference>();
     const loading: Ref<boolean> = ref(false);
     const edit: Ref<boolean> = ref(false);
-    const userStored = JSON.parse(localStorage.getItem("user")!) as SignIn;
+    const userStored: SignIn = JSON.parse(
+      localStorage.getItem("user")!
+    ) as SignIn;
     const handleFormSubmitted = async (formData: any) => {
       try {
         const username: string | string[] = route.params.username;
@@ -53,7 +55,7 @@ export default {
       }
     });
 
-    const toggleEdit = () => {
+    const toggleEdit = (): void => {
       edit.value = !edit.value;
     };
 

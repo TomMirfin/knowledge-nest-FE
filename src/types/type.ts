@@ -18,3 +18,26 @@ export interface Review {
   rating: number;
   title: string;
 }
+
+export interface EditReview {
+  username: SignIn;
+  created_about: string;
+  title: string;
+  body: string;
+  rating: number;
+}
+
+export interface ArticleData {
+  id: string;
+  username: string;
+  title: string;
+  topic: string;
+  body: string;
+  created_at: Date | String;
+}
+
+export interface PostObject {
+  username: string;
+  skills: string[];
+  interests: string[];
+}

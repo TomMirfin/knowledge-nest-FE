@@ -1,6 +1,7 @@
 <script lang="ts">
 import { getArticleByArticleId } from "../components/axios";
 import ChatButton from "../components/ChatButton.vue";
+
 export default {
   name: "Article",
   data() {

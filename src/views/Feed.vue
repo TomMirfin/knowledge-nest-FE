@@ -4,21 +4,6 @@ import { getArticles, postArticle } from "../components/axios.js";
 import ArticleCard from "../components/ArticleCard.vue";
 import { SignIn } from "../types/type";
 
-// interface ArticleData {
-//   id: string;
-//   username: string;
-//   title: string;
-//   topic: string;
-//   body: string;
-//   created_at: Date | String;
-// }
-// type newArticle = {
-//   title: String;
-//   body: String;
-//   topic: String;
-//   username: String;
-// };
-
 export default {
   name: "Feed",
 
