@@ -28,20 +28,7 @@ async function handleFormSubmitted(data: UserPreference) {
 </script>
 
 <template>
-  <FormKit
-    type="form"
-    @submit="handleFormSubmitted"
-    ref="form"
-    :classes="{
-      button: {
-        $reset: true,
-        'my-button': true,
-      },
-      input: {
-        $reset: true,
-      },
-    }"
-  >
+  <FormKit type="form" @submit="handleFormSubmitted" ref="form">
     <FormKit
       :value="userProfile.bio"
       type="textarea"
@@ -53,8 +40,7 @@ async function handleFormSubmitted(data: UserPreference) {
         label: 'block mb-1 font-bold text-sm',
         inner:
           'max-w-md border border-gray-400 rounded-lg mb-1 overflow-hidden focus-within:border-blue-500',
-        input:
-          'w-full h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
+        input: 'w-full text-white placeholder-gray-400',
         help: 'text-xs text-gray-500',
       }"
     />
@@ -92,10 +78,23 @@ async function handleFormSubmitted(data: UserPreference) {
         help="Select your Interest"
       />
     </div>
+    <FormKit
+      type="submit"
+      label="Submit"
+      :classes="{
+        outer: {
+          'my-button': true,
+        },
+        input: {
+          $reset: true,
+        },
+      }"
+    />
+    <div class="mt-5"></div>
   </FormKit>
 </template>
 
-<style>
+<style scoped>
 .my-button {
   background-color: #c1c1c1;
   border-radius: 1rem;
