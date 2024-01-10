@@ -11,7 +11,7 @@ const storedUser = JSON.parse(localStorage.getItem("user"));
 const router: Router = useRouter();
 const user = ref({
   id: "",
-  username: storedUser,
+  username: storedUser ? storedUser : "",
   token: "",
   img_url: "https://i.imgur.com/z7eiLjV.png",
 });
