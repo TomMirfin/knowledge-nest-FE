@@ -38,6 +38,7 @@ const handleSubmit = async (): Promise<void> => {
     if (res.data.title) alert("review sent");
     else alert("review failed to send");
     reviewResponse.value = [res.data, ...reviewResponse.value];
+    review.value = { title: "", body: "", rating: 5 };
   });
 };
 
@@ -57,6 +58,7 @@ onMounted(async () => {
       Click To see Reviews
     </button>
     <button
+      v-if="username !== userStored"
       @click="toggleAddComment"
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mt-5"
     >
@@ -103,7 +105,6 @@ onMounted(async () => {
           />
         </label>
       </div>
-
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mt-5"
       >
