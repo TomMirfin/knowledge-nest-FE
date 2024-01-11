@@ -97,7 +97,7 @@ const getCurrentUser = (): Promise<any> => {
   });
 };
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     try {
       const user = await getCurrentUser();
