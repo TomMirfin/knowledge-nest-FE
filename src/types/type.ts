@@ -27,12 +27,15 @@ export interface EditReview {
   rating: number;
 }
 
-export interface ArticleData {
-  id: string;
-  username: string;
+export interface Article {
   title: string;
   topic: string;
   body: string;
+  username: string;
+}
+
+export interface ArticleData extends Article {
+  id: string;
   created_at: Date | String;
 }
 

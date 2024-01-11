@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ArticleData } from "../types/type";
 
 axios.defaults.withCredentials = false;
 axios.defaults.baseURL = "https://skillshare-app.onrender.com";
@@ -8,7 +9,7 @@ export const getArticles = () => {
 };
 
 export const postArticle = (newArticle: object) => {
-  return axios.post("/articles", newArticle);
+  return axios.post<ArticleData>("/articles", newArticle);
 };
 
 export const getUserById = (user_id: string) => {

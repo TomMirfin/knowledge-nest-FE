@@ -2,14 +2,14 @@
 import { ref } from "vue";
 import { getArticles, postArticle } from "../components/axios.js";
 import ArticleCard from "../components/ArticleCard.vue";
-import { SignIn } from "../types/type";
+import { Article, ArticleData } from "../types/type";
 
 export default {
   name: "Feed",
 
   setup() {
-    const user = JSON.parse(localStorage.getItem("user")!) as SignIn;
-    const newArticle = ref({
+    const user: string = JSON.parse(localStorage.getItem("user")!);
+    const newArticle = ref<Article>({
       title: "",
       body: "",
       topic: "",
@@ -22,12 +22,12 @@ export default {
     return {
       isOpen: false,
       isLoaded: false,
-      articles: [],
+      articles: [] as ArticleData[],
     };
   },
   mounted() {
     this.isLoaded = true;
-    getArticles().then((res: any) => {
+    getArticles().then((res) => {
       this.articles = res.data.articles;
       this.isLoaded = false;
     });

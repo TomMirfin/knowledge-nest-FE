@@ -17,8 +17,8 @@ import { useAuth } from "../main";
 export default {
   components: { Avatar },
   setup() {
-    const { user, isLogin, signOut, signIn } = useAuth();
-    return { user, isLogin, signOut, signIn };
+    const { user, isLogin } = useAuth();
+    return { user, isLogin };
   },
 };
 </script>

@@ -6,7 +6,7 @@ import { Router, useRouter } from "vue-router";
 const isLoggedIn = ref(false);
 
 let auth: Auth;
-const storedUser = JSON.parse(localStorage.getItem("user"));
+const storedUser = JSON.parse(localStorage.getItem("user")!);
 
 const router: Router = useRouter();
 const user = ref({
