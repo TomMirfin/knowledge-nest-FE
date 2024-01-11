@@ -68,12 +68,22 @@ const handleSubmit = async (): Promise<void> => {
     class="flex-grow max-w-lg p-4 bg-[#073b1748] rounded-lg text-white shadow-2xl"
   >
     <form class="justify-center" @submit.prevent="handleSubmit">
-      <label> Title of Review</label>
-      <input v-model="review.title" />
-      <textarea
-        class="bg-white w-80 h-80 mb-5 text-black rounded-xl"
-        v-model="review.body"
-      />
+      <div class="flex flex-col">
+        <strong class="mb-2"> Write A Review</strong>
+        <input
+          v-model="review.title"
+          class="bg-white rounded-xl mb-4 ml-20 mr-20 text-black flex text-center pl-2"
+          placeholder="Title"
+        />
+      </div>
+
+      <div>
+        <textarea
+          class="bg-white w-80 h-80 mb-5 text-black rounded-xl mt-4 pl-2"
+          placeholder="Review"
+          v-model="review.body"
+        />
+      </div>
       <p class="font-bold mb-5">Please leave a Rating</p>
       <div class="flex justify-around">
         <label for="1" class="flex flex-col">
