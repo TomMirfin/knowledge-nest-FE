@@ -35,7 +35,7 @@ export default {
   methods: {
     addArticle() {
       //POST LOGIC
-      postArticle(this.newArticle).then((response: object) => {
+      postArticle(this.newArticle).then((response) => {
         this.articles.unshift(response.data);
         this.newArticle = { title: "", body: "", topic: "", username: "" };
         this.isOpen = !this.isOpen;

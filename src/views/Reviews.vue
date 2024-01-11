@@ -4,9 +4,10 @@ import { ref } from "vue";
 import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
 import { Review, SignIn, EditReview } from "../types/type";
 import { Ref } from "vue";
+import { AxiosResponse } from "axios";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
-const username: string | string[] = route.params.username;
+const username: any = route.params.username;
 
 const seeComments: Ref<boolean> = ref(false);
 const addComments: Ref<boolean> = ref(false);
@@ -37,9 +38,9 @@ const handleSubmit = async (): Promise<void> => {
     rating: review.value.rating,
   };
 
-  await postReview(postBody).then((res) => {
+  await postReview(postBody).then((res: AxiosResponse<any, any>) => {
     if (res.data.title) alert("review sent");
-    else alert("review failed to send");
+    else alert("Review Failed to Send");
     reviewResponse.value = [res.data, ...reviewResponse.value];
     review.value = { title: "", body: "", rating: 5 };
   });

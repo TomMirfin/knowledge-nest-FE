@@ -19,9 +19,9 @@ export default {
     const userStored: SignIn = JSON.parse(
       localStorage.getItem("user")!
     ) as SignIn;
-    const handleFormSubmitted = async (formData: any) => {
+    const username: string | string[] | any = route.params.username;
+    const handleFormSubmitted = async () => {
       try {
-        const username: string | string[] = route.params.username;
         if (username) {
           const res = await getUserByUsername(username);
           userProfile.value = res.data;
@@ -46,7 +46,6 @@ export default {
 
     onMounted(() => {
       loading.value = true;
-      const username: string | string[] = route.params.username;
       if (username) {
         getUserByUsername(username).then((res: any) => {
           loading.value = false;
@@ -150,7 +149,7 @@ export default {
           @click="toggleEdit"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
         >
-          {{ edit ? "Save Changes" : "Edit: Skills/Interests" }}
+          {{ edit ? "Save Changes" : "Edit Profile" }}
         </button>
       </p>
       <Reviews />

@@ -14,15 +14,15 @@ export const postArticle = (newArticle: object) => {
 export const getUserById = (user_id: string) => {
   return axios.get(`/users/${user_id}`);
 };
-export const getUserByUsername = (username: string) => {
+export const getUserByUsername = (username: any) => {
   return axios.get(`/users/username/${username}`);
 };
 
-export const patchUserByUser = (username: string, patchBody: object) => {
+export const patchUserByUser = (username: any, patchBody: object) => {
   return axios.put(`/users/${username}`, patchBody);
 };
 
-export const getArticleByArticleId = (article_id: string) => {
+export const getArticleByArticleId = (article_id: any) => {
   return axios.get(`articles/${article_id}`);
 };
 
@@ -34,6 +34,6 @@ export const getReviews = (username: string) => {
   return axios.get(`/reviews?created_about=${username}`);
 };
 
-export const postReview = (postBody: object) => {
+export const postReview = (postBody: any) => {
   return axios.post("/reviews", postBody);
 };

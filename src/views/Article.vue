@@ -5,7 +5,10 @@ import ChatButton from "../components/ChatButton.vue";
 export default {
   name: "Article",
   data() {
-    return { post: undefined, loading: true };
+    return {
+      post: { id: "", username: "", title: "", topic: "", body: "" },
+      loading: true,
+    };
   },
   mounted() {
     //GET POST BY POST ID
