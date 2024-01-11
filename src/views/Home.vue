@@ -1,4 +1,4 @@
-<script lang="ts"></script>
+<script setup lang="ts"></script>
 <template>
   <section
     class="bg-[url('./assets/pottery.jpg')] w-full min-h-screen bg-center bg-cover flex flex-col items-start justify-center"
