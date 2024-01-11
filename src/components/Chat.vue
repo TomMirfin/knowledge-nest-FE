@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { ref, watch, nextTick } from "vue";
+import { ref, watch, nextTick, Ref } from "vue";
 import { useAuth, useChat } from "../main";
 
 import Message from "./Message.vue";
@@ -42,7 +42,7 @@ export default {
     const { user, isLogin } = useAuth();
     const { messages, sendMessage } = useChat();
 
-    const bottom = ref(null);
+    const bottom: Ref<any> = ref(null);
     watch(
       messages,
       () => {

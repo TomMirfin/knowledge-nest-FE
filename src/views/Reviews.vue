@@ -11,7 +11,7 @@ const username: any = route.params.username;
 
 const seeComments: Ref<boolean> = ref(false);
 const addComments: Ref<boolean> = ref(false);
-const reviewResponse = ref([]);
+const reviewResponse: Ref<Review[]> = ref([]);
 const loading: Ref<boolean> = ref(false);
 const review: Ref<Review> = ref({ body: "", rating: 5, title: "" });
 const userStored: SignIn = JSON.parse(localStorage.getItem("user")!) as SignIn;

@@ -1,4 +1,4 @@
-import { createApp, onUnmounted, ref, computed } from "vue";
+import { createApp, onUnmounted, ref, computed, Ref } from "vue";
 import "./style.css";
 import { plugin, defaultConfig } from "@formkit/vue";
 import App from "./App.vue";
@@ -10,6 +10,7 @@ import "firebase/firestore";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import Filter from "bad-words";
+import { User } from "./types/type.js";
 
 const firebaseConfig: FirebaseOptions = {
   apiKey: import.meta.env.VUE_APP_FIREBASE_API_KEY || "api-key-not-set",
@@ -28,7 +29,7 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 export function useAuth() {
-  const user = ref(null);
+  const user: Ref<User> | any = ref(null);
   const unsubscribe = auth.onAuthStateChanged((_user) => (user.value = _user));
   onUnmounted(unsubscribe);
   const isLogin = computed(() => user.value !== null);
@@ -44,7 +45,7 @@ const messagesQuery = messagesCollection
 const filter = new Filter();
 
 export function useChat() {
-  const messages = ref([]);
+  const messages: Ref = ref([]);
   const unsubscribe = messagesQuery.onSnapshot((snapshot) => {
     messages.value = snapshot.docs
       .map((doc) => ({ id: doc.id, ...doc.data() }))
@@ -53,7 +54,7 @@ export function useChat() {
   onUnmounted(unsubscribe);
 
   const { user, isLogin } = useAuth();
-  const sendMessage = (text) => {
+  const sendMessage = (text: any) => {
     if (!isLogin.value) return;
     const { photoURL, uid, displayName } = user.value;
     messagesCollection.add({
@@ -68,7 +69,7 @@ export function useChat() {
   return { messages, sendMessage };
 }
 
-const app: App = createApp(App);
+const app = createApp(App);
 
 app.use(router);
 app.use(plugin, defaultConfig);

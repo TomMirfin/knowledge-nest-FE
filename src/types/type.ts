@@ -41,3 +41,9 @@ export interface PostObject {
   skills: string[];
   interests: string[];
 }
+
+export interface User {
+  photoURL: any;
+  uid: any;
+  displayName: any;
+}
