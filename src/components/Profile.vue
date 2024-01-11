@@ -80,7 +80,12 @@ export default {
       <div class="flex flex-col items-center">
         <p v-if="loading" class="text-xl font-bold">Loading...</p>
         <h1 v-if="userProfile" class="mt-4 text-2xl font-bold pt-20 pb-5">
-          {{ userProfile?.username }} 's Profile
+          {{
+            userProfile
+              ? userProfile.username[0].toUpperCase() +
+                userProfile.username.slice(1)
+              : ""
+          }}'s Profile
         </h1>
         <img
           :src="userProfile?.img_url"
@@ -110,7 +115,7 @@ export default {
           </ul>
         </div>
         <div
-          class="mt-4 p-4 border border-grey-900 border-t-1 border-l-0 border-r-0 border-b-1"
+          class="mt-4 p-4 border border-grey-900 border-t-1 border-l-0 border-r-0 border-b-0"
         >
           <h2 class="text-lg font-bold">Skills</h2>
           <ul v-if="userProfile && userProfile.skills.length > 0">
@@ -125,7 +130,7 @@ export default {
           <p v-else>No Skills Selected</p>
         </div>
         <div
-          class="mt-4 p-4 border border-grey-900 border-t-0 border-l-0 border-r-0 border-b-1"
+          class="mt-4 p-4 border border-grey-900 border-t-1 border-l-0 border-r-0 border-b-1"
         >
           <h2 class="text-lg font-bold">Interests</h2>
           <ul v-if="userProfile && userProfile.interests.length > 0">
