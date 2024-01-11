@@ -24,7 +24,7 @@
           class="h-40 w-1/2 absolute left-[120px] rounded-2xl ml-2"
           required
         />
-        <button type="submit">Submit</button>
+        <button type="submit"></button>
       </form>
     </div>
   </div>
