@@ -23,7 +23,7 @@ Run the development server with the command npm run dev
 To begin, create an environment variable file called .env at the root level, and replace the default with your own SDKs provided by firebase.
 
 In this file add the following lines and replace the SDKs with your own:
-VUE_APP_FIREBASE_API_KEY=<your_firebase_SDKS>
+<br>VUE_APP_FIREBASE_API_KEY=<your_firebase_SDKS>
 <br>VUE_APP_FIREBASE_AUTH_DOMAIN=<your_firebase_SDKS>
 <br>VUE_APP_FIREBASE_PROJECT_ID=<your_firebase_SDKS>
 <br>VUE_APP_FIREBASE_STORAGE_BUCKET=<your_firebase_SDKS>
