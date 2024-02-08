@@ -24,13 +24,13 @@ To begin, create an environment variable file called .env at the root level, and
 
 In this file add the following lines and replace the SDKs with your own:
 VUE_APP_FIREBASE_API_KEY=<your_firebase_SDKS>
-VUE_APP_FIREBASE_AUTH_DOMAIN=<your_firebase_SDKS>
-VUE_APP_FIREBASE_PROJECT_ID=<your_firebase_SDKS>
-VUE_APP_FIREBASE_STORAGE_BUCKET=<your_firebase_SDKS>
-VUE_APP_FIREBASE_MESSAGING_SENDER_ID=<your_firebase_SDKS>
-VUE_APP_FIREBASE_APP_ID=<your_firebase_SDKS>
-VUE_APP_FIREBASE_MEASUREMENT_ID=<your_firebase_SDKS>
-VUE_APP_PUBLISHABLEKEY=<your_firebase_SDKS>
+<br>VUE_APP_FIREBASE_AUTH_DOMAIN=<your_firebase_SDKS>
+<br>VUE_APP_FIREBASE_PROJECT_ID=<your_firebase_SDKS>
+<br>VUE_APP_FIREBASE_STORAGE_BUCKET=<your_firebase_SDKS>
+<br>VUE_APP_FIREBASE_MESSAGING_SENDER_ID=<your_firebase_SDKS>
+<br>VUE_APP_FIREBASE_APP_ID=<your_firebase_SDKS>
+<br>VUE_APP_FIREBASE_MEASUREMENT_ID=<your_firebase_SDKS>
+<br>VUE_APP_PUBLISHABLEKEY=<your_firebase_SDKS>
 
 ## Versions
 
