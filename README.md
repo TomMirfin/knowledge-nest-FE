@@ -1,6 +1,6 @@
 ## Frontend Knowledge Nest
 
-Link to the deployed app [Here](https://knowledge-nest.vercel.app/)
+Link to the deployed app [Here](https://knowledge-nest-fe.vercel.app)
 
 ## Summary
 
